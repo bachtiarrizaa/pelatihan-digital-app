@@ -28,8 +28,11 @@ export default function Login() {
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('user', JSON.stringify(res.data.user));
 
-      // Redirect ke halaman home
-      navigate('/');
+      if (res.data.user.role === 'admin') {
+        navigate('/admin');
+      } else {
+        navigate('/');
+      }
     } catch (err) {
       console.error(err);
       setError(err.response?.data?.message || 'Login gagal');

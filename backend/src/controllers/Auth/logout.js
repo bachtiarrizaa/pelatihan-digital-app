@@ -1,11 +1,27 @@
-// controllers/logoutController.js
+const { BlacklistToken } = require('../../models');
 
-const logout = async (req, res) => {
+const logout = async (req, res, next) => {
   try {
-    // Karena kita tidak menyimpan token di server (JWT stateless), cukup respon sukses
-    res.json({ message: 'Logout berhasil' });
+    const authHeader = req.headers["authorization"];
+
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+      return res.status(401).json({
+        status: 'fail',
+        message: 'You are not authorization'
+      });
+    }
+
+    const token = authHeader.split(" ")[1];
+
+    await BlacklistToken.create({ token });
+
+    return res.status(200).json({
+      status: 'success',
+      message: 'Logout berhasil'
+    });
   } catch (error) {
-    res.status(500).json({ message: 'Terjadi kesalahan saat logout' });
+    console.log(error);
+    next(error);
   }
 };
 

@@ -1,52 +1,59 @@
-// src/Pages/Admin/Dashboard.jsx
-import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import axios from '../../lib/axios';
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
-  const [error, setError] = useState('');
 
+  // Ambil user dari localStorage saat pertama render
   useEffect(() => {
-    const fetchMe = async () => {
-      try {
-        const res = await axios.get('/auth/me', {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
-          }
-        });
-
-        // Redirect kalau bukan admin
-        if (res.data.role !== 'admin') {
-          navigate('/');
-        } else {
-          setUser(res.data);
-        }
-      } catch (err) {
-        console.error(err);
-        setError('Gagal mengambil data user. Silakan login ulang.');
-        navigate('/login');
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      if (parsedUser.role !== 'admin') {
+        navigate('/'); // kalau bukan admin, redirect
+      } else {
+        setUser(parsedUser);
       }
-    };
-
-    fetchMe();
+    } else {
+      navigate('/login');
+    }
   }, [navigate]);
 
-  if (error) {
-    return <div className="text-red-500 p-4">{error}</div>;
-  }
+  const handleLogout = async () => {
+    try {
+      const token = localStorage.getItem('token');
 
-  if (!user) {
-    return <div className="p-4">Memuat data...</div>;
-  }
+      await axios.post('/auth/logout', {}, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      // Bersihkan localStorage & redirect
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      navigate('/login');
+    } catch (error) {
+      console.error('Logout gagal:', error);
+    }
+  };
 
   return (
-    <div className="min-h-screen bg-gray-100 p-6">
-      <h1 className="text-3xl font-bold mb-4 text-blue-700">Dashboard Admin</h1>
-      <p className="text-gray-700 mb-2">Selamat datang, {user.name}!</p>
-      <p className="text-gray-600">Email: {user.email}</p>
-      <p className="text-gray-600">Role: {user.role}</p>
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 px-6">
+      <div className="bg-white p-6 rounded-lg shadow-md text-center">
+        <h1 className="text-2xl font-bold text-blue-600 mb-4">
+          Selamat datang, {user?.name}
+        </h1>
+
+        <button
+          onClick={handleLogout}
+          className="mt-4 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 transition"
+        >
+          Logout
+        </button>
+      </div>
     </div>
   );
 }
