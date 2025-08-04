@@ -1,22 +1,33 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // Cek apakah ada user di localStorage
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      try {
+        setUser(JSON.parse(storedUser));
+      } catch {
+        setUser(null);
+      }
+    }
+  }, []);
 
   return (
-    <nav className="container p-6 mx-auto lg:flex lg:justify-between lg:items-center border-b border-gray-200">
+    <nav className="fixed px-6 sm:px-16 top-0 left-0 right-0 z-50 bg-white border-b border-blue-600 p-6 lg:flex lg:justify-between lg:items-center">
       <div className="flex items-center justify-between">
-
-        <Link to="#" className="flex items-center text-2xl font-bold space-x-2">
-        <i className="fas fa-graduation-cap text-blue-600 text-3xl"></i>
-        <span className="flex items-baseline">
+        <Link to="/" className="flex items-center text-2xl font-bold gap-x-1">
+          <i className="fas fa-graduation-cap text-blue-600 text-3xl"></i>
+          <span className="flex items-baseline">
             <span className="text-gray-800">Pelatihan</span>
             <span className="text-blue-600">.Ku</span>
             <sup className="text-xs text-gray-800 ml-1">™</sup>
-        </span>
+          </span>
         </Link>
-
 
         {/* Mobile menu button */}
         <div className="flex lg:hidden">
@@ -60,19 +71,28 @@ export default function Navbar() {
         } absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white shadow-md lg:shadow-none lg:mt-0 lg:p-0 lg:top-0 lg:bg-transparent lg:relative lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center`}
       >
         <div className="flex flex-col space-y-4 lg:mt-0 lg:flex-row lg:space-y-0">
-          <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/">Beranda    </Link>
-          <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/components">Daftar Pelatihan</Link>
-          <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/pricing">Pricing</Link>
-          <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/contact">Contact</Link>
-          <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/faq">FAQ</Link>
+          <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/">Beranda</Link>
+          <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/daftar-pelatihan">Daftar Pelatihan</Link>
+          <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/feedback">Feedback</Link>
+          {/* <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/contact">Contact</Link>
+          <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/faq">FAQ</Link> */}
         </div>
 
-        <Link
-          className="block px-5 py-2 mt-4 text-center text-gray-700 capitalize transition-colors duration-300 transform border rounded-md hover:bg-gray-100 lg:mt-0 lg:w-auto"
-          to="/login"
-        >
-          Masuk
-        </Link>
+        {user ? (
+          <Link
+            to="/profile" 
+            className="block px-5 py-2 mt-4 text-center text-gray-700 capitalize border rounded-md lg:mt-0 lg:w-auto ml-4"
+            >
+              Halo, {user.name}
+            </Link>
+        ) : (
+          <Link
+            className="block px-5 py-2 mt-4 text-center text-gray-700 capitalize transition-colors duration-300 transform border rounded-md hover:bg-gray-100 lg:mt-0 lg:w-auto ml-4"
+            to="/login"
+          >
+            Masuk
+          </Link>
+        )}
       </div>
     </nav>
   );

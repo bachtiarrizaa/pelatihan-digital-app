@@ -3,6 +3,10 @@ import Home from './Pages/Home';
 import Register from './Pages/Auth/Register';
 import Login from './Pages/Auth/Login';
 import AdminDashboard from './Pages/Admin/Dashboard';
+import Profile from './Pages/Profile/Index';
+import NotFound from './Components/NotFound';
+import DaftarPelatihan from './Pages/Pelatihan/DaftarPelatihan';
+import DetailPelatihan from './Pages/Pelatihan/DetailPelatihan';
 
 export default function App() {
   return (
@@ -11,6 +15,10 @@ export default function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/admin" element={<AdminDashboard />} />
+      <Route path="/profile" element={<Profile />} />
+      <Route path="/daftar-pelatihan" element={<DaftarPelatihan />} />
+      <Route path="/daftar-pelatihan-detail" element={<DetailPelatihan />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

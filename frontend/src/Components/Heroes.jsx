@@ -5,7 +5,7 @@ export default function Heroes() {
     const navigate = useNavigate();
 
     const handlePelatihanSayaClick = () => {
-        const token = localStorage.getItem('token');
+        const token = localStorage.getItem('user');
         if (token) {
             navigate('/dashboard');
         } else {
@@ -14,14 +14,14 @@ export default function Heroes() {
     };
 
     return (
-        <section className="container px-6 py-8 mx-auto text-center">
+        <section className="container px-6 pt-28 pb-6 mx-auto text-center">
             <div className="max-w-2xl mx-auto">
                 {/* Badge + Info */}
                 <div
-                    className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-6 text-sm text-gray-700 bg-gray-100 rounded-full hover:bg-white border border-gray-200 transition-colors duration-200"
+                    className="inline-flex justify-between cursor-pointer items-center py-1 px-1 pr-4 mb-6 text-sm text-gray-700 bg-gray-100 rounded-full hover:bg-white border border-gray-200 transition-colors duration-200"
                 >
                     <span className="text-xs bg-blue-600 rounded-full text-white px-4 py-1.5 mr-3">
-                        New
+                        New's
                     </span>
                     <span className="text-sm font-medium flex items-center">
                         Selamat Datang di
@@ -47,7 +47,7 @@ export default function Heroes() {
                 {/* CTA Buttons */}
                 <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
                     <Link
-                        to="pelatihan"
+                        to="/daftar-pelatihan"
                         className="inline-flex items-center justify-center px-6 py-3 text-white font-medium bg-blue-600 rounded-lg shadow-md hover:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80 transition"
                     >
                         Daftar Pelatihan

@@ -41,7 +41,7 @@ export default function Login() {
     <>
       <Navbar />
       <section className="bg-white">
-        <div className="container px-6 py-24 mx-auto">
+        <div className="container px-6 pt-36 mx-auto">
           <div className="lg:flex">
             <div className="lg:w-1/2">
               <Link to="#" className="flex items-center text-2xl font-bold space-x-2">
@@ -174,7 +174,7 @@ export default function Login() {
 
                   <Link
                     to="/register"
-                    className="inline-block mt-4 text-center text-blue-500 md:mt-0 md:mx-6 hover:underline"
+                    className="inline-block mt-4 text-center text-blue-500 md:mt-0 md:mx-6"
                   >
                     Belum punya akun?
                   </Link>
