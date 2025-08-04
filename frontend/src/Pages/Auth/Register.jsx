@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from '../../lib/axios';
 import { useNavigate, Link } from 'react-router-dom';
 import Navbar from '../../Components/NavBar';
@@ -15,6 +15,13 @@ export default function Register() {
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem('user');
+    if (token) {
+      navigate('/');
+    }
+  }, []);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -41,7 +48,7 @@ export default function Register() {
         <div className="container px-6 py-36 mx-auto">
           <div className="lg:flex">
             <div className="lg:w-1/2">
-              <Link to="#" className="flex items-center text-2xl font-bold space-x-2">
+              <Link to="/" className="flex items-center text-2xl font-bold space-x-2">
                 <i className="fas fa-graduation-cap text-blue-600 text-3xl"></i>
                 <span className="flex items-baseline">
                   <span className="text-gray-800">Pelatihan</span>
