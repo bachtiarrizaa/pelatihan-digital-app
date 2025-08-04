@@ -61,7 +61,7 @@ export default function Profile() {
           <div className="flex justify-end">
             <Link
               to="/edit-profile"
-              className="text-blue-600 bg-white py-1 px-4 text-[14px] font-bold rounded-full"
+              className="text-blue-600 bg-white py-1 px-4 text-sm font-bold rounded-full hover:bg-blue-50"
             >
               Ubah Profil
             </Link>
