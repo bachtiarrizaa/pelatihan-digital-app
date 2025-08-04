@@ -4,6 +4,7 @@ import Navbar from '../../Components/NavBar';
 
 export default function Profile() {
   const [user, setUser] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,14 +35,14 @@ export default function Profile() {
 
   const LogoutButton = ({ onClick }) => (
     <button
-        onClick={onClick}
-        className="flex items-center p-3 mt-4 bg-red-50 hover:bg-red-100 rounded-lg transition-colors w-full text-left"
+      onClick={onClick}
+      className="flex items-center p-3 mt-4 bg-red-50 hover:bg-red-100 rounded-lg transition-colors w-full text-left"
     >
-        <div className="w-8 text-red-600 text-xl flex justify-center">
-            <i className="fas fa-right-from-bracket"></i>
-        </div>
-        <span className="flex-1 ml-3 text-base font-medium text-red-700">Logout</span>
-        <i className="fas fa-chevron-right text-gray-400 text-xl"></i>
+      <div className="w-8 text-red-600 text-xl flex justify-center">
+        <i className="fas fa-right-from-bracket"></i>
+      </div>
+      <span className="flex-1 ml-3 text-base font-medium text-red-700">Logout</span>
+      <i className="fas fa-chevron-right text-gray-400 text-xl"></i>
     </button>
   );
 
@@ -83,16 +84,43 @@ export default function Profile() {
           </div>
         </div>
       </div>
+
       <div className="bg-white">
         <section className="pt-4 px-6 sm:px-16">
           <h2 className="text-lg font-bold sm:text-xl text-gray-800 mb-2">Pengaturan</h2>
           <div>
             <ActionItem icon="fa-solid fa-circle-info" label="Tentang Aplikasi" to="/about" />
             <ActionItem icon="fa-solid fa-phone" label="Ubah Kata Sandi" to="/password/change" />
-            <LogoutButton onClick={handleLogout} />
+            <LogoutButton onClick={() => setShowModal(true)} />
           </div>
         </section>
       </div>
+
+      {/* Modal Konfirmasi Logout */}
+      {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
+          <div className="bg-white rounded-lg p-6 w-full max-w-sm shadow-xl text-center">
+            <h2 className="text-lg font-semibold text-gray-800">Konfirmasi Logout</h2>
+            <p className="text-sm text-gray-600 mt-2">
+              Apakah kamu yakin ingin keluar dari akun ini?
+            </p>
+            <div className="mt-4 flex justify-center gap-4">
+              <button
+                onClick={() => setShowModal(false)}
+                className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded hover:bg-gray-200"
+              >
+                Batal
+              </button>
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded hover:bg-red-700"
+              >
+                Ya, Keluar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
