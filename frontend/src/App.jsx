@@ -8,18 +8,26 @@ import NotFound from './Components/NotFound';
 import DaftarPelatihan from './Pages/Pelatihan/DaftarPelatihan';
 import DetailPelatihan from './Pages/Pelatihan/DetailPelatihan';
 import EditProfile from './Pages/Profile/Edit';
+import MainLayout from './Layout/MainLayout';
 
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
+      {/* Halaman-halaman yang menggunakan layout dengan Navbar & Footer */}
+      <Route element={<MainLayout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/edit-profile" element={<EditProfile />} />
+        <Route path="/daftar-pelatihan" element={<DaftarPelatihan />} />
+        <Route path="/daftar-pelatihan-detail" element={<DetailPelatihan />} />
+      </Route>
+
+      {/* Halaman-halaman tanpa layout */}
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/admin" element={<AdminDashboard />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/edit-profile" element={<EditProfile />} />
-      <Route path="/daftar-pelatihan" element={<DaftarPelatihan />} />
-      <Route path="/daftar-pelatihan-detail" element={<DetailPelatihan />} />
+
+      {/* 404 */}
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

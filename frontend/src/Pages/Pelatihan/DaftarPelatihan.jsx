@@ -1,4 +1,3 @@
-// import { useEffect, useState } from 'react';
 import Navbar from '../../Components/NavBar';
 import { Link } from 'react-router-dom';
 
@@ -7,81 +6,152 @@ export default function DaftarPelatihan() {
     <>
       <Navbar />
       <div className="max-w-7xl mx-auto px-6 pb-8 pt-28">
-        <h1 className="text-2xl font-bold mb-6 text-gray-800">Daftar Pelatihan</h1>
+        <h1 className="text-2xl font-bold mb-6 text-gray-800">Daftar <span className="text-blue-600">Pelatihan</span></h1>
 
         {/* Grid Card Pelatihan */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Card 1 */}
-          <div className="px-6 py-4 bg-white rounded-lg shadow-md">
-            <div className="mt-2">
-              <Link
-                to="/daftar-pelatihan-detail"
-                className="text-xl font-bold text-gray-700 hover:text-gray-600"
-              >
-                Web Development Dasar
+
+          <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md">
+            <div className="relative group">
+              <Link to="/daftar-pelatihan-detail">
+                <img
+                  className="object-cover w-full h-52 rounded-t-lg"
+                  src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                  alt="Pelatihan"
+                />
+
+                {/* Judul tetap ditampilkan */}
+                <div className="absolute bottom-0 left-0 w-full bg-black/50 text-white px-4 py-2">
+                  <h2 className="text-xl font-semibold truncate">Belajar Frontend Web Development</h2>
+                </div>
+
+                {/* Overlay muncul saat hover */}
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-t-lg">
+                  <span className="text-white text-lg font-medium">Lihat Detail</span>
+                </div>
               </Link>
-              <p className="mt-2 text-gray-600 text-justify">
-                Pelajari HTML, CSS, dan dasar JavaScript untuk membangun halaman web statis dan dinamis.
-              </p>
             </div>
 
-            <div className="flex items-center justify-between mt-4">
-              <div to="#" className="text-blue-600">
-                8 Modul Pelatihan
+            <div className="p-4">
+              <div>
+                <div className="flex items-center justify-between">
+                    <Link to="#" className="text-sm font-medium text-blue-600">Web Development</Link>
+                </div>
+                <p className="mt-2 text-sm text-gray-600 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris egestas quam volutpat viverra. In pretium nec senectus erat. Et malesuada lobortis.</p>
               </div>
-
-              <span className="px-3 py-1 text-sm font-bold text-gray-100 bg-blue-600 rounded hover:bg-blue-500 cursor-pointer">
-                Daftar
+            </div>
+            <div className="flex flex-wrap gap-2 items-center justify-between px-4 pb-4 text-sm font-light text-gray-500">
+              <span className="flex items-center gap-2">
+                <i className="fas fa-layer-group"></i>
+                13 Modul
+              </span>
+              <span className="flex items-center gap-2">
+                <i className="fas fa-clock"></i>
+                60 Jam
+              </span>
+              <span className="flex items-center gap-2">
+                <i className="fas fa-star text-yellow-400"></i>
+                4.5
+              </span>
+              <span className="flex items-center gap-2">
+                <i className="fas fa-users"></i>
+                450 Siswa Terdaftar
               </span>
             </div>
           </div>
+          <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md">
+            <div className="relative group">
+              <Link to="/daftar-pelatihan-detail">
+                <img
+                  className="object-cover w-full h-52 rounded-t-lg"
+                  src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                  alt="Pelatihan"
+                />
 
-          {/* Card 2 */}
-          <div className="px-6 py-4 bg-white rounded-lg shadow-md">
-            <div className="mt-2">
-              <Link
-                to="#"
-                className="text-xl font-bold text-gray-700 hover:text-gray-600"
-              >
-                UI/UX Design
+                {/* Judul tetap ditampilkan */}
+                <div className="absolute bottom-0 left-0 w-full bg-black/50 text-white px-4 py-2">
+                  <h2 className="text-xl font-semibold truncate">Belajar Frontend Web Development</h2>
+                </div>
+
+                {/* Overlay muncul saat hover */}
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-t-lg">
+                  <span className="text-white text-lg font-medium">Lihat Detail</span>
+                </div>
               </Link>
-              <p className="mt-2 text-gray-600 text-justify">
-                Pelatihan ini membahas prinsip desain antarmuka dan pengalaman pengguna yang baik.
-              </p>
             </div>
 
-            <div className="flex items-center justify-between mt-4">
-              <div to="#" className="text-blue-600">
-                5 Modul Pelatihan
+            <div className="p-4">
+              <div>
+                <div className="flex items-center justify-between">
+                    <Link to="#" className="text-sm font-medium text-blue-600">Web Development</Link>
+                </div>
+                <p className="mt-2 text-sm text-gray-600 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris egestas quam volutpat viverra. In pretium nec senectus erat. Et malesuada lobortis.</p>
               </div>
-
-              <span className="px-3 py-1 text-sm font-bold text-gray-100 bg-blue-600 rounded hover:bg-blue-500 cursor-pointer">
-                Daftar
+            </div>
+            <div className="flex flex-wrap gap-2 items-center justify-between px-4 pb-4 text-sm font-light text-gray-500">
+              <span className="flex items-center gap-2">
+                <i className="fas fa-layer-group"></i>
+                13 Modul
+              </span>
+              <span className="flex items-center gap-2">
+                <i className="fas fa-clock"></i>
+                60 Jam
+              </span>
+              <span className="flex items-center gap-2">
+                <i className="fas fa-star text-yellow-400"></i>
+                4.5
+              </span>
+              <span className="flex items-center gap-2">
+                <i className="fas fa-users"></i>
+                450 Siswa Terdaftar
               </span>
             </div>
           </div>
+          <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md">
+            <div className="relative group">
+              <Link to="/daftar-pelatihan-detail">
+                <img
+                  className="object-cover w-full h-52 rounded-t-lg"
+                  src="https://images.unsplash.com/photo-1550439062-609e1531270e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                  alt="Pelatihan"
+                />
 
-          {/* Card 3 */}
-          <div className="px-6 py-4 bg-white rounded-lg shadow-md">
-            <div className="mt-2">
-              <Link
-                to="#"
-                className="text-xl font-bold text-gray-700 hover:text-gray-600"
-              >
-                Digital Marketing
+                {/* Judul tetap ditampilkan */}
+                <div className="absolute bottom-0 left-0 w-full bg-black/50 text-white px-4 py-2">
+                  <h2 className="text-xl font-semibold truncate">Belajar Frontend Web Development</h2>
+                </div>
+
+                {/* Overlay muncul saat hover */}
+                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center rounded-t-lg">
+                  <span className="text-white text-lg font-medium">Lihat Detail</span>
+                </div>
               </Link>
-              <p className="mt-2 text-gray-600 text-justify">
-                Kuasai strategi pemasaran digital termasuk SEO, media sosial, dan kampanye iklan online.
-              </p>
             </div>
 
-            <div className="flex items-center justify-between mt-4">
-              <div to="#" className="text-blue-600">
-                6 Modul Pelatihan
+            <div className="p-4">
+              <div>
+                <div className="flex items-center justify-between">
+                    <Link to="#" className="text-sm font-medium text-blue-600">Web Development</Link>
+                </div>
+                <p className="mt-2 text-sm text-gray-600 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris egestas quam volutpat viverra. In pretium nec senectus erat. Et malesuada lobortis.</p>
               </div>
-
-              <span className="px-3 py-1 text-sm font-bold text-gray-100 bg-blue-600 rounded hover:bg-blue-500 cursor-pointer">
-                Daftar
+            </div>
+            <div className="flex flex-wrap gap-2 items-center justify-between px-4 pb-4 text-sm font-light text-gray-500">
+              <span className="flex items-center gap-2">
+                <i className="fas fa-layer-group"></i>
+                13 Modul
+              </span>
+              <span className="flex items-center gap-2">
+                <i className="fas fa-clock"></i>
+                60 Jam
+              </span>
+              <span className="flex items-center gap-2">
+                <i className="fas fa-star text-yellow-400"></i>
+                4.5
+              </span>
+              <span className="flex items-center gap-2">
+                <i className="fas fa-users"></i>
+                450 Siswa Terdaftar
               </span>
             </div>
           </div>

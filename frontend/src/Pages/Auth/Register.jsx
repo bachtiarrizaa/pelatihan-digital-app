@@ -277,7 +277,7 @@ export default function Register() {
 
                   <Link
                     to="/login"
-                    className="inline-block mt-4 text-center text-blue-500 md:mt-0 md:mx-6"
+                    className="inline-block mt-4 text-center text-gray-800 hover:text-blue-600 md:mt-0 md:mx-6"
                   >
                     Sudah punya akun?
                   </Link>
