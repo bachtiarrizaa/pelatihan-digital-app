@@ -81,13 +81,13 @@ export default function Navbar() {
         {user ? (
           <Link
             to="/profile" 
-            className="block px-5 py-2 mt-4 text-center text-gray-700 capitalize border rounded-md lg:mt-0 lg:w-auto ml-4"
+            className="block px-5 py-2 mt-4 text-center text-blue-600 capitalize border border-blue-600 hover:bg-gray-50 rounded-md lg:mt-0 lg:w-auto ml-4"
             >
               Halo, {user.name}
             </Link>
         ) : (
           <Link
-            className="block px-5 py-2 mt-4 text-center text-gray-700 capitalize transition-colors duration-300 transform border rounded-md hover:bg-gray-100 lg:mt-0 lg:w-auto ml-4"
+            className="block px-5 py-2 mt-4 text-center text-blue-600 capitalize transition-colors duration-300 transform border border-blue-600 rounded-md hover:bg-gray-50 lg:mt-0 lg:w-auto ml-4"
             to="/login"
           >
             Masuk

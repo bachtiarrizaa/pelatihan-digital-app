@@ -154,12 +154,8 @@ export default function EditProfile() {
 
   return (
     <>
-      {/* <Helmet>
-        <title>Ubah Profil</title>
-      </Helmet> */}
-
-      <div className="bg-white min-h-screen">
-        <header className="bg-blue-600 text-white h-16 px-6 sm:px-16 flex items-center justify-between px-4 fixed top-0 w-full z-10">
+      <div className="bg-white pt-12">
+        <div className="bg-blue-600 text-white h-16 px-6 sm:px-16 flex items-center justify-between px-4 pt-16 pb-6">
           <Link to="/profile">
             <i className="fa-solid fa-chevron-left fa-xl"></i>
           </Link>
@@ -172,15 +168,15 @@ export default function EditProfile() {
           >
             Simpan
           </button>
-        </header>
+        </div>
 
-        <form id="edit-profile-form" onSubmit={submit} className="pt-20 pb-8 px-6 bg-white">
+        <form id="edit-profile-form" onSubmit={submit} className="pb-8 px-6 bg-white">
           <div className="flex justify-center">
-            <div className="relative my-2">
+            <div className="relative my-4">
               <img
                 src={previewUrl}
                 alt="Pratinjau Profil"
-                className="w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg cursor-pointer"
+                className="w-28 h-28 rounded-full object-cover border-4 border-white shadow cursor-pointer"
                 onClick={() => fileInputRef.current.click()}
               />
               <div
@@ -202,7 +198,7 @@ export default function EditProfile() {
             <p className="text-center text-red-600 text-xs -mt-4 mb-4">{errors.image_profile}</p>
           )}
 
-          <div className="bg-white p-6 rounded-xl shadow-md">
+          <div className="bg-white p-6 rounded-xl shadow">
             <FormInput label="NIK" name="nik" value={data.nik} onChange={handleChange} error={errors.nik} focusedField={focusedField} setFocusedField={setFocusedField} />
             <FormInput label="Nama" name="name" value={data.name} onChange={handleChange} error={errors.name} focusedField={focusedField} setFocusedField={setFocusedField} />
             <FormInput label="Email" name="email" type="email" value={data.email} onChange={handleChange} error={errors.email} focusedField={focusedField} setFocusedField={setFocusedField} />

@@ -48,13 +48,13 @@ export default function Heroes() {
                 <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
                     <Link
                         to="/daftar-pelatihan"
-                        className="inline-flex items-center justify-center px-6 py-3 text-white font-medium bg-blue-600 rounded-lg shadow-md hover:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80 transition"
+                        className="inline-flex items-center justify-center px-6 py-3 text-white font-medium bg-blue-600 rounded-lg shadow-sm hover:bg-blue-500 focus:ring focus:ring-blue-300 focus:ring-opacity-80 transition"
                     >
                         Daftar Pelatihan
                     </Link>
                     <button
                         onClick={handlePelatihanSayaClick}
-                        className="inline-flex items-center justify-center px-6 py-3 text-blue-600 font-medium bg-white border border-blue-600 rounded-lg shadow-md hover:bg-gray-100 focus:ring focus:ring-blue-300 focus:ring-opacity-80 transition"
+                        className="inline-flex items-center justify-center px-6 py-3 text-blue-600 font-medium bg-white border border-blue-600 rounded-lg shadow-sm hover:bg-gray-50 focus:ring focus:ring-blue-300 focus:ring-opacity-80 transition"
                     >
                         Lihat Pelatihan Saya
                     </button>

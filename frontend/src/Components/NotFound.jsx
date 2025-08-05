@@ -1,6 +1,8 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export default function NotFound() {
+  const navigate = useNavigate();
+
   return (
     <section className="bg-white">
       <div className="container flex items-center min-h-screen p-12 mx-auto">
@@ -12,15 +14,15 @@ export default function NotFound() {
             404 Page Not Found
           </h1>
           <p className="mt-4 text-gray-500">
-            Maaf, halaman yang kamu cari tidak tersedia. Coba kembali ke halaman utama.
+            Maaf, halaman yang kamu cari tidak tersedia. Coba kembali ke halaman sebelumnya.
           </p>
 
-            <Link
-              to="/"
-              className="mt-4 flex items-center justify-center px-5 py-2 text-sm text-blue-600 font-medium bg-white border border-blue-600 rounded-lg shadow-md hover:bg-gray-100 focus:ring focus:ring-blue-300 focus:ring-opacity-80 transition sm:w-auto"
-            >
-              <span>Kembali ke Beranda</span>
-            </Link>
+          <button
+            onClick={() => navigate(-1)}
+            className="mt-4 flex items-center justify-center px-5 py-2 text-sm text-blue-600 font-medium bg-white border border-blue-600 rounded-lg shadow-md hover:bg-gray-100 focus:ring focus:ring-blue-300 focus:ring-opacity-80 transition sm:w-auto"
+          >
+            <span>Kembali ke Sebelumnya</span>
+          </button>
         </div>
       </div>
     </section>

@@ -19,7 +19,9 @@ export default function Footer() {
                     <hr className="my-4 border-gray-200 sm:my-6" />
 
                     <div className="flex flex-col items-center sm:flex-row sm:justify-between">
-                        <p className="text-sm text-gray-500 ">© Copyright 2025. All Rights Reserved, bachtiarrizap.</p>
+                        <p className="text-sm text-gray-500 text-center">
+                            &copy; {new Date().getFullYear()} bachtiarrizap. All rights reserved.
+                        </p>
 
                         <div className="flex mt-4 sm:mt-0">
                             <Link href="#" className="mx-2 text-gray-600 transition-colors duration-300 hover:text-blue-500" aria-label="Reddit">

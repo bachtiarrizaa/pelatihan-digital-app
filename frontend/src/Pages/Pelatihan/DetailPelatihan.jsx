@@ -101,7 +101,7 @@ export default function DetailPelatihan() {
       <Navbar />
       <section className="bg-gray-50 pt-24 sm:pt-28">
         <div className="container px-6 mx-auto">
-          <div className="lg:px-24 pt-4 pb-8">
+          <div className="lg:px-24 pt-4 pb-6 sm:pb-8">
             <div className="flex flex-col lg:flex-row items-start justify-between gap-4 sm:gap-8">
 
               {/* Gambar */}
@@ -154,12 +154,22 @@ export default function DetailPelatihan() {
                 </button>
 
                 <button
-                  className="w-full px-4 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-blue-100 transition duration-200">
+                  className="w-full px-4 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-gray-50 transition duration-200">
                   <i className="fas fa-comments mr-2"></i> Feedback
                 </button>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+      <section className='bg-blue-600 py-4'>
+        <div class="flex justify-center mx-auto">
+          <span class="inline-block w-40 h-1 bg-white rounded-full"></span>
+          <span class="inline-block w-3 h-1 mx-1 bg-white rounded-full"></span>
+          <span class="inline-block w-1 h-1 mx-1 bg-white rounded-full"></span>
+          <span class="inline-block w-1 h-1 mx-1 bg-white rounded-full"></span>
+          <span class="inline-block w-3 h-1 mx-1 bg-white rounded-full"></span>
+          <span class="inline-block w-40 h-1 bg-white rounded-full"></span>
         </div>
       </section>
 

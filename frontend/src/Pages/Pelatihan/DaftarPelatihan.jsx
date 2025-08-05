@@ -6,12 +6,18 @@ export default function DaftarPelatihan() {
     <>
       <Navbar />
       <div className="max-w-7xl mx-auto px-6 pb-8 pt-28">
-        <h1 className="text-2xl font-bold mb-6 text-gray-800">Daftar <span className="text-blue-600">Pelatihan</span></h1>
+        <h1 className="text-2xl font-bold text-blue-600">Daftar <span className="text-gray-800">Pelatihan</span></h1>
+
+        <div class="flex justify-center mx-auto my-6">
+            <span class="inline-block w-40 h-1 bg-blue-500 rounded-full"></span>
+            <span class="inline-block w-3 h-1 mx-1 bg-blue-500 rounded-full"></span>
+            <span class="inline-block w-1 h-1 bg-blue-500 rounded-full"></span>
+        </div>
 
         {/* Grid Card Pelatihan */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-          <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md">
+          <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow">
             <div className="relative group">
               <Link to="/daftar-pelatihan-detail">
                 <img
@@ -59,7 +65,7 @@ export default function DaftarPelatihan() {
               </span>
             </div>
           </div>
-          <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md">
+          <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow">
             <div className="relative group">
               <Link to="/daftar-pelatihan-detail">
                 <img
@@ -107,7 +113,7 @@ export default function DaftarPelatihan() {
               </span>
             </div>
           </div>
-          <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow-md">
+          <div className="max-w-2xl overflow-hidden bg-white rounded-lg shadow">
             <div className="relative group">
               <Link to="/daftar-pelatihan-detail">
                 <img
