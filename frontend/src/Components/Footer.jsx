@@ -6,8 +6,8 @@ export default function Footer() {
             <footer className="bg-white">
                 <div className="container px-6 py-8 mx-auto">
                     <div className="flex flex-col items-center text-center">
-                        <Link to="/" className="flex items-center text-2xl font-bold gap-x-1">
-                            <i className="fas fa-graduation-cap text-blue-600 text-3xl"></i>
+                        <Link to="/" className="flex items-center text-xl font-bold gap-x-1">
+                            <i className="fas fa-graduation-cap text-blue-600 text-xl"></i>
                             <span className="flex items-baseline">
                                 <span className="text-gray-800">Pelatihan</span>
                                 <span className="text-blue-600">.Ku</span>

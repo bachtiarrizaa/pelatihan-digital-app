@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import Navbar from '../../Components/NavBar';
+import Feedback from '../../Components/Feedback';
 
 const pelatihan = {
   title: 'Pelatihan Frontend Web Development',
@@ -162,6 +163,7 @@ export default function DetailPelatihan() {
           </div>
         </div>
       </section>
+
       <section className='bg-blue-600 py-4'>
         <div class="flex justify-center mx-auto">
           <span class="inline-block w-40 h-1 bg-white rounded-full"></span>
@@ -176,7 +178,12 @@ export default function DetailPelatihan() {
       <section className="bg-white" ref={silabusRef}>
         <div className="container px-6 mx-auto">
           <div className="lg:px-24 pt-4 pb-8">
-            <h2 className="text-xl font-semibold mb-4 text-gray-800">Silabus Pelatihan Frontend Web Development</h2>
+            <h2 className="text-xl lg:text-2xl font-semibold text-gray-800"><span className='text-blue-600'>Silabus</span> {pelatihan.title}</h2>
+            <div class="flex mx-auto my-6">
+              <span class="inline-block w-40 h-1 bg-blue-500 rounded-full"></span>
+              <span class="inline-block w-3 h-1 mx-1 bg-blue-500 rounded-full"></span>
+              <span class="inline-block w-1 h-1 bg-blue-500 rounded-full"></span>
+            </div>
             <div className="space-y-4">
               {pelatihan.modul.map((modul, idx) => (
                 <AccordionItem
@@ -190,6 +197,19 @@ export default function DetailPelatihan() {
           </div>
         </div>
       </section>
+
+      {/* <section className='bg-gray-50 py-4'>
+        <div class="flex justify-center mx-auto">
+          <span class="inline-block w-40 h-1 bg-blue-600 rounded-full"></span>
+          <span class="inline-block w-3 h-1 mx-1 bg-blue-600 rounded-full"></span>
+          <span class="inline-block w-1 h-1 mx-1 bg-blue-600 rounded-full"></span>
+          <span class="inline-block w-1 h-1 mx-1 bg-blue-600 rounded-full"></span>
+          <span class="inline-block w-3 h-1 mx-1 bg-blue-600 rounded-full"></span>
+          <span class="inline-block w-40 h-1 bg-blue-600 rounded-full"></span>
+        </div>
+      </section> */}
+
+      <Feedback />
     </>
   );
 }
