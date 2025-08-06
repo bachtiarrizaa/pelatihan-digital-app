@@ -92,6 +92,7 @@ function AccordionItem({ modul, isOpen, onClick }) {
 export default function DetailPelatihan() {
   const [openIndex, setOpenIndex] = useState(null);
   const silabusRef = useRef(null);
+  const feedbackRef = useRef(null);
 
   const toggle = (index) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -142,7 +143,7 @@ export default function DetailPelatihan() {
 
               {/* Tombol Aksi */}
               <div className="w-full lg:w-auto bg-white rounded-xl shadow-sm p-6 text-center space-y-3">
-                <button className="w-full px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-500 transition duration-200">
+                <button className="w-full px-2 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-500 transition duration-200">
                   <i className="fas fa-sign-in-alt mr-2"></i> Daftar
                 </button>
 
@@ -150,13 +151,14 @@ export default function DetailPelatihan() {
 
                 <button
                   onClick={() => silabusRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                  className="w-full px-4 py-2 text-white bg-gray-800 rounded-md hover:bg-gray-700 transition duration-200">
+                  className="w-full px-2 py-2 text-white bg-gray-800 rounded-md hover:bg-gray-700 transition duration-200">
                   <i className="fas fa-file-alt mr-2"></i> Silabus
                 </button>
 
                 <button
-                  className="w-full px-4 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-gray-50 transition duration-200">
-                  <i className="fas fa-comments mr-2"></i> Feedback
+                  onClick={() => feedbackRef.current?.scrollIntoView({ behavior: 'smooth' })}
+                  className="w-full px-2 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-gray-50 transition duration-200">
+                  <i className="fas fa-comments mr-2"></i> Testimonials
                 </button>
               </div>
             </div>
@@ -178,7 +180,11 @@ export default function DetailPelatihan() {
       <section className="bg-white" ref={silabusRef}>
         <div className="container px-6 mx-auto">
           <div className="lg:px-24 pt-4 pb-8">
-            <h2 className="text-xl lg:text-2xl font-semibold text-gray-800"><span className='text-blue-600'>Silabus</span> {pelatihan.title}</h2>
+            <p className="text-lg font-medium text-blue-600">Silabus</p>
+            <h1 className="text-xl font-semibold text-gray-800 capitalize lg:text-2xl">
+              Pelatihan Frontend Web Development
+            </h1>
+            {/* <h2 className="text-xl lg:text-2xl font-semibold text-gray-800"><span className='text-blue-600'>Silabus</span> {pelatihan.title}</h2> */}
             <div class="flex mx-auto my-6">
               <span class="inline-block w-40 h-1 bg-blue-500 rounded-full"></span>
               <span class="inline-block w-3 h-1 mx-1 bg-blue-500 rounded-full"></span>
@@ -198,18 +204,9 @@ export default function DetailPelatihan() {
         </div>
       </section>
 
-      {/* <section className='bg-gray-50 py-4'>
-        <div class="flex justify-center mx-auto">
-          <span class="inline-block w-40 h-1 bg-blue-600 rounded-full"></span>
-          <span class="inline-block w-3 h-1 mx-1 bg-blue-600 rounded-full"></span>
-          <span class="inline-block w-1 h-1 mx-1 bg-blue-600 rounded-full"></span>
-          <span class="inline-block w-1 h-1 mx-1 bg-blue-600 rounded-full"></span>
-          <span class="inline-block w-3 h-1 mx-1 bg-blue-600 rounded-full"></span>
-          <span class="inline-block w-40 h-1 bg-blue-600 rounded-full"></span>
-        </div>
-      </section> */}
-
-      <Feedback />
+      <div ref={feedbackRef}>
+        <Feedback />
+      </div>
     </>
   );
 }
