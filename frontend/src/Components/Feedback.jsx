@@ -66,35 +66,37 @@ export default function Feedback() {
       <div className="container px-6 mx-auto">
         <div className="lg:px-24 pt-4 pb-4">
           {/* Title + Buttons */}
-          <div className="md:flex md:items-center md:justify-between">
+          <div className="">
             <div>
-              <p className="text-lg font-medium text-blue-600">Testimonials</p>
-              <h1 className="text-xl font-semibold text-gray-800 capitalize lg:text-2xl">
-                Pelatihan Frontend Web Development
-              </h1>
-            </div>
-            <div className="flex justify-between mt-4 gap-4">
-              <button
-                onClick={handlePrev}
-                className="p-2 text-blue-600 transition-colors duration-300 border rounded-full hover:bg-gray-100 disabled:opacity-30"
-                disabled={startIndex === 0}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none"
-                  viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                </svg>
-              </button>
+              <div className="flex items-center justify-between">
+                <p className="text-lg font-medium text-blue-600">Testimonials</p>
+                <div className="flex justify-between gap-2 sm:gap-4">
+                  <button
+                    onClick={handlePrev}
+                    className="p-2 text-blue-600 transition-colors duration-300 border rounded-full hover:bg-gray-100 disabled:opacity-30"
+                    disabled={startIndex === 0}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none"
+                      viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
 
-              <button
-                onClick={handleNext}
-                className="p-2 text-blue-600 transition-colors duration-300 border rounded-full hover:bg-gray-100 disabled:opacity-30"
-                disabled={startIndex >= maxStartIndex}
-              >
-                <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none"
-                  viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
+                  <button
+                    onClick={handleNext}
+                    className="p-2 text-blue-600 transition-colors duration-300 border rounded-full hover:bg-gray-100 disabled:opacity-30"
+                    disabled={startIndex >= maxStartIndex}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" fill="none"
+                      viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <h1 className="text-xl font-semibold text-gray-800 capitalize lg:text-2xl">
+                Frontend Web Development
+              </h1>
             </div>
           </div>
 

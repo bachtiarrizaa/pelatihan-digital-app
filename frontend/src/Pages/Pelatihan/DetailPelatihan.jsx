@@ -1,9 +1,12 @@
-import { useState, useRef, useEffect } from 'react';
+// import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from '../../Components/NavBar';
 import Feedback from '../../Components/Feedback';
+import Silabus from '../../Components/Silabus';
 
 const pelatihan = {
-  title: 'Pelatihan Frontend Web Development',
+  title: 'Frontend Web Development',
   deskripsi:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Molestie parturient et sem ipsum volutpat vel. Natoque sem et aliquam mauris egestas quam volutpat viverra. In pretium nec senectus erat. Et malesuada lobortis.",
   modul: [
@@ -49,53 +52,44 @@ const pelatihan = {
   ],
 };
 
-function AccordionItem({ modul, isOpen, onClick }) {
-  const contentRef = useRef(null);
-  const [height, setHeight] = useState(0);
-
-  useEffect(() => {
-    if (isOpen && contentRef.current) {
-      setHeight(contentRef.current.scrollHeight);
-    } else {
-      setHeight(0);
-    }
-  }, [isOpen]);
-
-  return (
-    <div className="border border-gray-200 rounded-lg overflow-hidden transition-all">
-      <button
-        onClick={onClick}
-        className="w-full flex items-center justify-between px-4 py-3 bg-gray-50 hover:bg-gray-100 text-left"
-      >
-        <span className="font-medium text-gray-700">{modul.nama}</span>
-        <span className="text-sm text-gray-500">
-          <i className={`fas ${isOpen ? 'fa-chevron-up' : 'fa-chevron-down'}`}></i>
-        </span>
-      </button>
-      <div
-        className="transition-all duration-300 ease-in-out overflow-hidden"
-        style={{ maxHeight: `${height}px` }}
-      >
-        <ul
-          ref={contentRef}
-          className="px-6 pt-2 pb-4 list-disc list-inside text-sm text-gray-600 space-y-1"
-        >
-          {modul.materi.map((materi, i) => (
-            <li key={i}>{materi}</li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  );
-}
-
 export default function DetailPelatihan() {
-  const [openIndex, setOpenIndex] = useState(null);
+  // const [isOpen, setIsOpen] = useState(false);
   const silabusRef = useRef(null);
   const feedbackRef = useRef(null);
 
-  const toggle = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
+  const navigate = useNavigate();
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [sudahDaftar, setSudahDaftar] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("user");
+    const daftar = localStorage.getItem("sudahDaftar");
+
+    setIsLoggedIn(!!token);
+    if (token && daftar === "true") {
+      setSudahDaftar(true);
+    }
+  }, []);
+
+  const handleDaftarClick = () => {
+    if (!isLoggedIn) {
+      navigate("/login");
+      return;
+    }
+
+    setIsOpen(true);
+  };
+
+  const handleDaftar = () => {
+    setIsOpen(false);
+    setSudahDaftar(true);
+    localStorage.setItem("sudahDaftar", "true");
+  };
+
+  const handleMulai = () => {
+    navigate("/pembelajaran");
   };
 
   return (
@@ -143,21 +137,83 @@ export default function DetailPelatihan() {
 
               {/* Tombol Aksi */}
               <div className="w-full lg:w-auto bg-white rounded-xl shadow-sm p-6 text-center space-y-3">
-                <button className="w-full px-2 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-500 transition duration-200">
-                  <i className="fas fa-sign-in-alt mr-2"></i> Daftar
-                </button>
 
+                {/* Tombol Daftar / Mulai */}
+                {isLoggedIn && sudahDaftar ? (
+                  <button
+                    onClick={handleMulai}
+                    className="w-full px-2 py-2 text-white bg-green-600 rounded-md hover:bg-green-500 transition duration-200"
+                  >
+                    <i className="fas fa-play mr-2"></i> Mulai Belajar
+                  </button>
+                ) : (
+                  <button
+                    onClick={handleDaftarClick}
+                    className="w-full px-2 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-500 transition duration-200"
+                  >
+                    <i className="fas fa-sign-in-alt mr-2"></i> Daftar
+                  </button>
+                )}
+
+                {/* Modal Konfirmasi */}
+                {isOpen && (
+                  <div className="fixed inset-0 z-10 overflow-hidden">
+                    <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+                      <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
+                        &#8203;
+                      </span>
+
+                      <div className="relative inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+                        <div>
+                          <div className="flex items-center justify-center">
+                            <i className="fa-solid fa-circle-question text-5xl text-blue-600"></i>
+                          </div>
+
+                          <div className="my-3 text-center">
+                            <h3 className="text-lg font-medium leading-6 text-gray-800">
+                              Konfirmasi Pendaftaran
+                            </h3>
+                            <p className="mt-2 text-sm text-gray-500">
+                              Dengan mendaftar, Anda akan mendapatkan akses ke seluruh materi pelatihan ini. Lanjutkan?
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="sm:flex sm:items-center sm:justify-between">
+                          <button
+                            onClick={() => setIsOpen(false)}
+                            className="w-full px-4 py-2 mt-2 text-sm font-medium tracking-wide text-gray-700 border border-gray-200 rounded-md sm:w-auto sm:mx-2 hover:bg-gray-100"
+                          >
+                            Batal
+                          </button>
+                          <button
+                            onClick={handleDaftar}
+                            className="w-full px-4 py-2 mt-2 text-sm font-medium tracking-wide text-white bg-blue-600 rounded-md sm:w-auto hover:bg-blue-500"
+                          >
+                            Daftar
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* Divider */}
                 <div className="border-t border-gray-200 my-1"></div>
 
+                {/* Tombol Silabus */}
                 <button
                   onClick={() => silabusRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                  className="w-full px-2 py-2 text-white bg-gray-800 rounded-md hover:bg-gray-700 transition duration-200">
+                  className="w-full px-2 py-2 text-white bg-gray-800 rounded-md hover:bg-gray-700 transition duration-200"
+                >
                   <i className="fas fa-file-alt mr-2"></i> Silabus
                 </button>
 
+                {/* Tombol Testimonials */}
                 <button
                   onClick={() => feedbackRef.current?.scrollIntoView({ behavior: 'smooth' })}
-                  className="w-full px-2 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-gray-50 transition duration-200">
+                  className="w-full px-2 py-2 text-blue-600 border border-blue-600 rounded-md hover:bg-gray-50 transition duration-200"
+                >
                   <i className="fas fa-comments mr-2"></i> Testimonials
                 </button>
               </div>
@@ -167,42 +223,19 @@ export default function DetailPelatihan() {
       </section>
 
       <section className='bg-blue-600 py-4'>
-        <div class="flex justify-center mx-auto">
-          <span class="inline-block w-40 h-1 bg-white rounded-full"></span>
-          <span class="inline-block w-3 h-1 mx-1 bg-white rounded-full"></span>
-          <span class="inline-block w-1 h-1 mx-1 bg-white rounded-full"></span>
-          <span class="inline-block w-1 h-1 mx-1 bg-white rounded-full"></span>
-          <span class="inline-block w-3 h-1 mx-1 bg-white rounded-full"></span>
-          <span class="inline-block w-40 h-1 bg-white rounded-full"></span>
+        <div className="flex justify-center mx-auto">
+          <span className="inline-block w-40 h-1 bg-white rounded-full"></span>
+          <span className="inline-block w-3 h-1 mx-1 bg-white rounded-full"></span>
+          <span className="inline-block w-1 h-1 mx-1 bg-white rounded-full"></span>
+          <span className="inline-block w-1 h-1 mx-1 bg-white rounded-full"></span>
+          <span className="inline-block w-3 h-1 mx-1 bg-white rounded-full"></span>
+          <span className="inline-block w-40 h-1 bg-white rounded-full"></span>
         </div>
       </section>
 
-      <section className="bg-white" ref={silabusRef}>
-        <div className="container px-6 mx-auto">
-          <div className="lg:px-24 pt-4 pb-8">
-            <p className="text-lg font-medium text-blue-600">Silabus</p>
-            <h1 className="text-xl font-semibold text-gray-800 capitalize lg:text-2xl">
-              Pelatihan Frontend Web Development
-            </h1>
-            {/* <h2 className="text-xl lg:text-2xl font-semibold text-gray-800"><span className='text-blue-600'>Silabus</span> {pelatihan.title}</h2> */}
-            <div class="flex mx-auto my-6">
-              <span class="inline-block w-40 h-1 bg-blue-500 rounded-full"></span>
-              <span class="inline-block w-3 h-1 mx-1 bg-blue-500 rounded-full"></span>
-              <span class="inline-block w-1 h-1 bg-blue-500 rounded-full"></span>
-            </div>
-            <div className="space-y-4">
-              {pelatihan.modul.map((modul, idx) => (
-                <AccordionItem
-                  key={idx}
-                  modul={modul}
-                  isOpen={openIndex === idx}
-                  onClick={() => toggle(idx)}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <div ref={silabusRef}>
+        <Silabus />
+      </div>
 
       <div ref={feedbackRef}>
         <Feedback />

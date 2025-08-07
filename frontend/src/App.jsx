@@ -9,6 +9,7 @@ import DaftarPelatihan from './Pages/Pelatihan/DaftarPelatihan';
 import DetailPelatihan from './Pages/Pelatihan/DetailPelatihan';
 import EditProfile from './Pages/Profile/Edit';
 import MainLayout from './Layout/MainLayout';
+import Index from './Pages/Pembelajaran';
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="/daftar-pelatihan" element={<DaftarPelatihan />} />
         <Route path="/daftar-pelatihan-detail" element={<DetailPelatihan />} />
+        <Route path="/pembelajaran" element={<Index />} />
       </Route>
 
       {/* Halaman-halaman tanpa layout */}
