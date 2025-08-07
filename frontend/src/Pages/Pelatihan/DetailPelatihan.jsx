@@ -62,6 +62,7 @@ export default function DetailPelatihan() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [sudahDaftar, setSudahDaftar] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("user");
@@ -75,8 +76,24 @@ export default function DetailPelatihan() {
 
   const handleDaftarClick = () => {
     if (!isLoggedIn) {
-      navigate("/login");
-      return;
+      // alert("Maaf, Anda tidak bisa daftar. Silakan login terlebih dahulu.");
+      // navigate("/login");
+      // return;
+
+      if (!isLoggedIn) {
+        setShowAlert(true); // Tampilkan alert
+        setTimeout(() => {
+          setShowAlert(false); // Sembunyikan alert setelah beberapa detik
+          navigate("/login");  // Redirect ke login
+        }, 2000); // 2 detik delay sebelum pindah halaman
+        return;
+      }
+
+      // Proses daftar kalau sudah login
+      setIsOpen(false);
+      setSudahDaftar(true);
+      localStorage.setItem("sudahDaftar", "true");
+
     }
 
     setIsOpen(true);
@@ -153,6 +170,24 @@ export default function DetailPelatihan() {
                   >
                     <i className="fas fa-sign-in-alt mr-2"></i> Daftar
                   </button>
+                )}
+
+                {showAlert && (
+                  <div className="fixed top-16 left-1/2 transform -translate-x-1/2 z-50 w-[90%] sm:w-full max-w-md">
+                    <div className="flex w-full overflow-hidden bg-white rounded-lg shadow-md">
+                      <div className="flex items-center justify-center w-12 sm:w-16 bg-red-500">
+                        <i className="fa-solid fa-circle-xmark text-xl sm:text-2xl text-white"></i>
+                      </div>
+                      <div className="flex-1 px-3 sm:px-4 py-3 sm:py-4">
+                        <div className="text-left">
+                          <span className="font-semibold text-red-500 text-sm sm:text-base">Gagal</span>
+                          <p className="text-xs sm:text-sm text-gray-600 mt-1 sm:mt-2">
+                            Maaf, Anda Belum Login. Silakan login terlebih dahulu.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 )}
 
                 {/* Modal Konfirmasi */}
