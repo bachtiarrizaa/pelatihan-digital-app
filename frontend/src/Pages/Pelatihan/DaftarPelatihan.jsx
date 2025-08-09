@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default function DaftarPelatihan() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="max-w-7xl mx-auto px-6 pb-8 pt-28">
         <h1 className="text-2xl font-bold text-blue-600">Daftar <span className="text-gray-800">Pelatihan</span></h1>
 

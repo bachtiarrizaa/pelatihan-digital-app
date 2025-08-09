@@ -25,7 +25,7 @@ export default function Navbar() {
           <span className="flex items-baseline">
             <span className="text-gray-800">Pelatihan</span>
             <span className="text-blue-600">.Ku</span>
-            <sup className="text-xs text-gray-800 ml-1">™</sup>
+            <sup className="text-xs text-gray-800 ml-0.5">™</sup>
           </span>
         </Link>
 

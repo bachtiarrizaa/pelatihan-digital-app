@@ -20,6 +20,18 @@ export default function Profile() {
     }
   }, [navigate]);
 
+  const InfoItem = ({ icon, label, value }) => (
+    <div className="flex items-center py-2 px-3 rounded-lg bg-blue-50 hover:bg-blue-600/15 transition-colors w-full mt-4">
+        <div className="w-8 text-blue-600 text-xl flex justify-center">
+          <i className={icon}></i>
+        </div>
+        <div className="flex-1 ml-3 text-sm text-gray-800">
+          <span className="font-semibold">{label}</span>
+          <p className="font-normal">{value || '-'}</p>
+        </div>
+    </div>
+  );
+
   const ActionItem = ({ icon, label, to }) => (
     <Link
       to={to}
@@ -41,7 +53,7 @@ export default function Profile() {
       <div className="w-8 text-red-600 text-xl flex justify-center">
         <i className="fas fa-right-from-bracket"></i>
       </div>
-      <span className="flex-1 ml-3 text-base font-medium text-red-700">Logout</span>
+      <span className="flex-1 ml-3 text-base font-medium text-red-700">Keluar</span>
       <i className="fas fa-chevron-right text-gray-400 text-xl"></i>
     </button>
   );
@@ -87,7 +99,20 @@ export default function Profile() {
 
       <div className="bg-white">
         <section className="pt-4 px-6 sm:px-16">
-          <h2 className="text-lg font-bold sm:text-xl text-gray-800 mb-2">Pengaturan</h2>
+          <h2 className="text-lg font-bold sm:text-xl text-gray-800 mb-2">Informasi Pribadi</h2>
+          <div>
+            <InfoItem icon="fa-solid fa-user" label="Username" value={user.username} />
+            <InfoItem icon="fa-solid fa-calendar-days" label="Tempat, Tanggal Lahir" value={user.username} />
+            <InfoItem icon="fa-solid fa-venus-mars" label="Jenis Kelamin" value={user.username} />
+            <InfoItem icon="fa-solid fa-location-dot" label="Alamat" value={user.username} />
+            <ActionItem icon="fa-solid fa-book-open" label="Aktivitas Belajar" to="/aktivitas-belajar" />
+          </div>
+        </section>
+      </div>
+
+      <div className="bg-white">
+        <section className="pt-4 px-6 sm:px-16">
+          <h2 className="text-lg font-bold sm:text-xl text-gray-800 mb-2">Lainnya</h2>
           <div>
             <ActionItem icon="fa-solid fa-circle-info" label="Tentang Aplikasi" to="/about" />
             <ActionItem icon="fa-solid fa-phone" label="Ubah Kata Sandi" to="/password/change" />
@@ -98,25 +123,40 @@ export default function Profile() {
 
       {/* Modal Konfirmasi Logout */}
       {showModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40">
-          <div className="bg-white rounded-lg p-6 w-full max-w-sm shadow-xl text-center">
-            <h2 className="text-lg font-semibold text-gray-800">Konfirmasi Logout</h2>
-            <p className="text-sm text-gray-600 mt-2">
-              Apakah kamu yakin ingin keluar dari akun ini?
-            </p>
-            <div className="mt-4 flex justify-center gap-4">
-              <button
-                onClick={() => setShowModal(false)}
-                className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded hover:bg-gray-200"
-              >
-                Batal
-              </button>
-              <button
-                onClick={handleLogout}
-                className="px-4 py-2 text-sm font-medium text-white bg-red-600 rounded hover:bg-red-700"
-              >
-                Ya, Keluar
-              </button>
+        <div className="fixed inset-0 z-10 overflow-hidden">
+          <div className="flex items-center justify-center min-h-screen px-4 text-center">
+            <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
+              &#8203;
+            </span>
+
+            <div className="relative inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-middle transition-all transform bg-white rounded-lg shadow-xl sm:max-w-sm sm:w-full sm:p-6">
+              <div className="flex items-center justify-center">
+                <i class="fa-solid fa-right-from-bracket text-4xl text-red-600"></i>
+              </div>
+
+              <div className="my-3 text-center">
+                <h3 className="text-lg font-medium leading-6 text-gray-800">
+                  Konfirmasi Keluar
+                </h3>
+                <p className="mt-2 text-sm text-gray-500">
+                  Apakah kamu yakin ingin keluar dari akun ini?
+                </p>
+              </div>
+
+              <div className="flex items-center justify-between">
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="px-4 py-2 mt-2 text-sm font-medium tracking-wide text-gray-700 border border-gray-200 rounded-md sm:w-auto sm:mx-2 hover:bg-gray-100"
+                >
+                  Batal
+                </button>
+                <button
+                  onClick={handleLogout}
+                  className="px-4 py-2 mt-2 text-sm font-medium tracking-wide text-white bg-red-600 rounded-md sm:w-auto hover:bg-red-500"
+                >
+                  Ya, Keluar
+                </button>
+              </div>
             </div>
           </div>
         </div>

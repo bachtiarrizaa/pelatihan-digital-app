@@ -76,20 +76,16 @@ export default function DetailPelatihan() {
 
   const handleDaftarClick = () => {
     if (!isLoggedIn) {
-      // alert("Maaf, Anda tidak bisa daftar. Silakan login terlebih dahulu.");
-      // navigate("/login");
-      // return;
 
       if (!isLoggedIn) {
-        setShowAlert(true); // Tampilkan alert
+        setShowAlert(true);
         setTimeout(() => {
-          setShowAlert(false); // Sembunyikan alert setelah beberapa detik
-          navigate("/login");  // Redirect ke login
-        }, 2000); // 2 detik delay sebelum pindah halaman
+          setShowAlert(false);
+          navigate("/login");
+        }, 2000);
         return;
       }
 
-      // Proses daftar kalau sudah login
       setIsOpen(false);
       setSudahDaftar(true);
       localStorage.setItem("sudahDaftar", "true");
@@ -193,37 +189,35 @@ export default function DetailPelatihan() {
                 {/* Modal Konfirmasi */}
                 {isOpen && (
                   <div className="fixed inset-0 z-10 overflow-hidden">
-                    <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+                    <div className="flex items-center justify-center min-h-screen px-4 text-center">
                       <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
                         &#8203;
                       </span>
 
-                      <div className="relative inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
-                        <div>
-                          <div className="flex items-center justify-center">
-                            <i className="fa-solid fa-circle-question text-5xl text-blue-600"></i>
-                          </div>
-
-                          <div className="my-3 text-center">
-                            <h3 className="text-lg font-medium leading-6 text-gray-800">
-                              Konfirmasi Pendaftaran
-                            </h3>
-                            <p className="mt-2 text-sm text-gray-500">
-                              Dengan mendaftar, Anda akan mendapatkan akses ke seluruh materi pelatihan ini. Lanjutkan?
-                            </p>
-                          </div>
+                      <div className="relative inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-middle transition-all transform bg-white rounded-lg shadow-xl sm:max-w-sm sm:w-full sm:p-6">
+                        <div className="flex items-center justify-center">
+                          <i className="fa-solid fa-circle-question text-5xl text-blue-600"></i>
                         </div>
 
-                        <div className="sm:flex sm:items-center sm:justify-between">
+                        <div className="my-3 text-center">
+                          <h3 className="text-lg font-medium leading-6 text-gray-800">
+                            Konfirmasi Pendaftaran
+                          </h3>
+                          <p className="mt-2 text-sm text-gray-500">
+                            Dengan mendaftar, Anda akan mendapatkan akses ke seluruh materi pelatihan ini. Lanjutkan?
+                          </p>
+                        </div>
+
+                        <div className="flex items-center justify-between">
                           <button
                             onClick={() => setIsOpen(false)}
-                            className="w-full px-4 py-2 mt-2 text-sm font-medium tracking-wide text-gray-700 border border-gray-200 rounded-md sm:w-auto sm:mx-2 hover:bg-gray-100"
+                            className="px-4 py-2 mt-2 text-sm font-medium tracking-wide text-gray-700 border border-gray-200 rounded-md sm:w-auto sm:mx-2 hover:bg-gray-100"
                           >
                             Batal
                           </button>
                           <button
                             onClick={handleDaftar}
-                            className="w-full px-4 py-2 mt-2 text-sm font-medium tracking-wide text-white bg-blue-600 rounded-md sm:w-auto hover:bg-blue-500"
+                            className="px-4 py-2 mt-2 text-sm font-medium tracking-wide text-white bg-blue-600 rounded-md sm:w-auto hover:bg-blue-500"
                           >
                             Daftar
                           </button>
@@ -231,6 +225,46 @@ export default function DetailPelatihan() {
                       </div>
                     </div>
                   </div>
+
+                  // <div className="fixed inset-0 z-10 overflow-hidden">
+                  //   <div className="flex items-end justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+                  //     <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
+                  //       &#8203;
+                  //     </span>
+
+                  //     <div className="relative inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-bottom transition-all transform bg-white rounded-lg shadow-xl sm:my-8 sm:align-middle sm:max-w-sm sm:w-full sm:p-6">
+                  //       <div>
+                  //         <div className="flex items-center justify-center">
+                  //           <i className="fa-solid fa-circle-question text-5xl text-blue-600"></i>
+                  //         </div>
+
+                  //         <div className="my-3 text-center">
+                  //           <h3 className="text-lg font-medium leading-6 text-gray-800">
+                  //             Konfirmasi Pendaftaran
+                  //           </h3>
+                  //           <p className="mt-2 text-sm text-gray-500">
+                  //             Dengan mendaftar, Anda akan mendapatkan akses ke seluruh materi pelatihan ini. Lanjutkan?
+                  //           </p>
+                  //         </div>
+                  //       </div>
+
+                  //       <div className="flex items-center justify-between">
+                  //         <button
+                  //           onClick={() => setIsOpen(false)}
+                  //           className="px-4 py-2 mt-2 text-sm font-medium tracking-wide text-gray-700 border border-gray-200 rounded-md sm:w-auto sm:mx-2 hover:bg-gray-100"
+                  //         >
+                  //           Batal
+                  //         </button>
+                  //         <button
+                  //           onClick={handleDaftar}
+                  //           className="px-4 py-2 mt-2 text-sm font-medium tracking-wide text-white bg-blue-600 rounded-md sm:w-auto hover:bg-blue-500"
+                  //         >
+                  //           Daftar
+                  //         </button>
+                  //       </div>
+                  //     </div>
+                  //   </div>
+                  // </div>
                 )}
 
                 {/* Divider */}
