@@ -285,6 +285,26 @@ export default function Register() {
               </form>
             </div>
           </div>
+          <div className="mt-8 md:mt-24 flex items-center justify-between flex-wrap gap-y-4">
+            <h3 className="text-blue-600">Media Sosial</h3>
+            <div className="flex items-center text-2xl gap-x-3">
+              <a className="text-gray-400 transition-colors duration-300 transform hover:text-blue-600" href="#">
+                <i className="fa-brands fa-instagram"></i>
+              </a>
+              <a className="text-gray-400 transition-colors duration-300 transform hover:text-blue-600" href="#">
+                <i className="fa-brands fa-facebook-f"></i>
+              </a>
+              <a className="text-gray-400 transition-colors duration-300 transform hover:text-blue-600" href="#">
+                <i className="fa-brands fa-tiktok"></i>
+              </a>
+              <a className="text-gray-400 transition-colors duration-300 transform hover:text-blue-600" href="#">
+                <i className="fa-brands fa-twitter"></i>
+              </a>
+              <a className="text-gray-400 transition-colors duration-300 transform hover:text-blue-600" href="#">
+                <i className="fa-brands fa-medium"></i>
+              </a>
+            </div>
+          </div>
         </div>
       </section>
     </>
