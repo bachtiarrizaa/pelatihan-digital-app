@@ -68,7 +68,6 @@ export default function Profile() {
 
   return (
     <>
-      <Navbar />
       <div className="bg-blue-600 text-white pt-28 pb-4 px-6 relative text-center mx-auto">
         <div className="px-2 sm:px-16">
           <div className="flex justify-end">
