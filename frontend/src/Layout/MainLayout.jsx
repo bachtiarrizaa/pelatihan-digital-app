@@ -7,7 +7,7 @@ export default function MainLayout() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen">
+      <main className="">
         <Outlet /> {/* Ini akan merender komponen halaman sesuai route */}
       </main>
       <Footer />

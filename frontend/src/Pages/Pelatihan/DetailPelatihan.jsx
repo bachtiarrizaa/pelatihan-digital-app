@@ -82,7 +82,7 @@ export default function DetailPelatihan() {
         setTimeout(() => {
           setShowAlert(false);
           navigate("/login");
-        }, 2000);
+        }, 1000);
         return;
       }
 

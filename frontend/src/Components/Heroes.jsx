@@ -7,7 +7,7 @@ export default function Heroes() {
     const handlePelatihanSayaClick = () => {
         const token = localStorage.getItem('user');
         if (token) {
-            navigate('/dashboard');
+            navigate('/aktivitas-belajar');
         } else {
             navigate('/login');
         }

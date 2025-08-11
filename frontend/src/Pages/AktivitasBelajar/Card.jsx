@@ -48,8 +48,7 @@ const pelatihan = {
   ],
 };
 
-// Komponen AccordionItem
-function AccordionItem({ modul, isOpen, onToggle }) {
+function AccordionItem({ modul, isOpen, onToggle, isLast }) {
   const contentRef = useRef(null);
   const [height, setHeight] = useState("0px");
 
@@ -62,7 +61,7 @@ function AccordionItem({ modul, isOpen, onToggle }) {
   }, [isOpen]);
 
   return (
-    <div className="border-b">
+    <div className={`${!isLast ? "border-b" : ""}`}>
       <div className="flex items-center justify-between p-4">
         <div className="flex gap-2 items-center">
           <i className="fa-regular fa-circle-check text-green-600"></i>
@@ -74,7 +73,6 @@ function AccordionItem({ modul, isOpen, onToggle }) {
         ></i>
       </div>
 
-      {/* Konten */}
       <div
         ref={contentRef}
         style={{ maxHeight: height }}
@@ -99,6 +97,7 @@ function AccordionItem({ modul, isOpen, onToggle }) {
   );
 }
 
+
 export default function AktivitasBelajarCard() {
   const [openIndex, setOpenIndex] = useState(null);
 
@@ -114,7 +113,7 @@ export default function AktivitasBelajarCard() {
           <Link to="#" className="text-lg sm:text-xl font-bold text-gray-700">
             {pelatihan.title}
           </Link>
-          <button className="px-3 py-1 text-sm font-bold text-gray-100 bg-blue-600 rounded hover:bg-blue-500">
+          <button className="px-3 py-1 text-sm text-blue-600 bg-white rounded hover:bg-gray-50 border border-blue-600">
             Mulai
           </button>
         </div>
@@ -136,6 +135,7 @@ export default function AktivitasBelajarCard() {
             modul={modul}
             isOpen={openIndex === index}
             onToggle={() => toggleExpand(index)}
+            isLast={index === pelatihan.modul.length - 1} // true kalau terakhir
           />
         ))}
       </div>

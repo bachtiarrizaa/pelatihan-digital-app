@@ -11,7 +11,7 @@ export default function AktivitasBelajar() {
     <div className="bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 pb-4 pt-28 relative">
       {/* Judul */}
-      <h1 className="text-2xl px-2 font-bold text-blue-600 flex items-center justify-between">
+      <h1 className="text-2xl px-1 font-bold text-blue-600 flex items-center justify-between">
         <span>
           Aktivitas <span className="text-gray-800">Belajar</span>
         </span>
