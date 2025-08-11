@@ -69,7 +69,7 @@ function AccordionItem({ modul, isOpen, onToggle }) {
           <span className="text-base text-gray-700">{modul.nama}</span>
         </div>
         <i
-          className={`fa-solid fa-chevron-${isOpen ? "up" : "down"} text-lg cursor-pointer transition-transform duration-300`}
+          className={`fa-solid fa-chevron-${isOpen ? "up" : "down"} text-base sm:text-lg text-green-700 cursor-pointer transition-transform duration-300`}
           onClick={onToggle}
         ></i>
       </div>
@@ -109,27 +109,27 @@ export default function AktivitasBelajarCard() {
   return (
     <div className="w-full bg-white rounded-lg shadow pt-4 pb-3">
       {/* Header */}
-      <div className="flex px-6 pb-4 mt-2 items-center justify-between border-b-2">
-        <div>
-          <Link to="#" className="text-xl font-bold text-gray-700">
+      <div className="px-4 sm:px-6 pb-4 mt-2 items-center justify-between border-b-2">
+        <div className="flex items-center justify-between">
+          <Link to="#" className="text-lg sm:text-xl font-bold text-gray-700">
             {pelatihan.title}
           </Link>
-          <div className="flex items-center gap-1 text-gray-500 mt-2">
-            <i className="fa-regular fa-clock text-sm"></i>
-            <p className="text-sm">
-              Deadline belajar seluruh kelas:
-              <span className="font-bold text-gray-700"> 28 Februari 2026 </span>
-              - 23:59 (201 hari lagi)
-            </p>
-          </div>
+          <button className="px-3 py-1 text-sm font-bold text-gray-100 bg-blue-600 rounded hover:bg-blue-500">
+            Mulai
+          </button>
         </div>
-        <button className="px-3 py-1 text-sm font-bold text-gray-100 bg-blue-600 rounded hover:bg-blue-500">
-          Mulai
-        </button>
+        <div className="flex items-start gap-2 sm:gap-1 text-gray-500 mt-2">
+          <i className="fa-regular fa-clock text-sm"></i>
+          <p className="text-sm text-justify">
+            Deadline belajar seluruh kelas:
+            <span className="font-bold text-gray-700"> 28 Februari 2026 </span>
+            - 23:59 (201 hari lagi)
+          </p>
+        </div>
       </div>
 
       {/* List Modul */}
-      <div className="px-6">
+      <div className="px-2 sm:px-4">
         {pelatihan.modul.map((modul, index) => (
           <AccordionItem
             key={index}

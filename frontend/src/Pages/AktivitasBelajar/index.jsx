@@ -8,44 +8,39 @@ export default function AktivitasBelajar() {
   const toggleDesktopSidebar = () => setIsOpen(!isOpen);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 pb-4 pt-28 relative">
+    <div className="bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 pb-4 pt-28 relative">
       {/* Judul */}
-      <h1 className="text-2xl font-bold text-blue-600 flex items-center justify-between">
+      <h1 className="text-2xl px-2 font-bold text-blue-600 flex items-center justify-between">
         <span>
           Aktivitas <span className="text-gray-800">Belajar</span>
         </span>
       </h1>
 
-      <div class="justify-center items-center my-6 sm:hidden">
-        <div class="flex items-center gap-2 sm:gap-4">
+      <div class="mt-6 sm:hidden">
+        <div class="flex items-center justify-center gap-2 sm:gap-4">
           <button
-            class="px-4 py-2 text-sm text-center text-gray-600 bg-gray-50 sm:text-base font-medium whitespace-nowrap rounded-lg hover:bg-gray-100">
+            class="px-4 py-2 text-sm text-center text-gray-600 bg-white sm:text-base font-medium whitespace-nowrap rounded-lg hover:bg-gray-100">
             Pelatihan yan Dipelajari
           </button>
           <button
-            class="px-4 py-2 text-sm text-center text-gray-600 bg-gray-50 sm:text-base font-medium whitespace-nowrap rounded-lg hover:bg-gray-100">
+            class="px-4 py-2 text-sm text-center text-gray-600 bg-white sm:text-base font-medium whitespace-nowrap rounded-lg hover:bg-gray-100">
             Pelatihan yan Dipelajari
           </button>
-        </div>
-        <div class="flex justify-center mt-4">
-            <span class="inline-block w-40 h-1 bg-blue-500 rounded-full"></span>
-            <span class="inline-block w-3 h-1 mx-1 bg-blue-500 rounded-full"></span>
-            <span class="inline-block w-1 h-1 bg-blue-500 rounded-full"></span>
         </div>
       </div>
 
 
-      <div className="flex mt-4">
+      <div className="flex mt-3">
         {/* Sidebar Desktop */}
         <aside
-          className={`hidden md:flex flex-col bg-white border-r overflow-hidden transition-[width] duration-500 ease-out
-            ${isOpen ? "w-60" : "w-12"}
-            h-[calc(100vh-7rem)]`}
+          className={`hidden px-4 md:flex flex-col bg-white border-r overflow-hidden transition-[width] duration-500 ease-out
+            ${isOpen ? "w-60" : "w-12"}`}
         >
           {/* Header Menu */}
           <div
             className={`flex items-center ${
-              isOpen ? "justify-between py-2 pr-4 border-b" : "justify-center py-2"
+              isOpen ? "justify-between py-2 border-b" : "justify-center py-2"
             }`}
           >
             {isOpen && (
@@ -66,16 +61,16 @@ export default function AktivitasBelajar() {
 
           {/* Menu Items */}
           {isOpen && (
-            <nav className="mt-2 space-y-1 whitespace-nowrap overflow-hidden transition-opacity duration-300">
+            <nav className="mt-2 whitespace-nowrap overflow-hidden transition-opacity duration-300">
               <Link
                 to="#"
-                className="block py-2 rounded hover:bg-gray-100 font-medium text-gray-700"
+                className="block p-2 rounded font-medium text-gray-600 hover:text-blue-600"
               >
                 Pelatihan yang Dipelajari
               </Link>
               <Link
                 to="#"
-                className="block py-2 rounded hover:bg-gray-100 font-medium text-gray-700"
+                className="block p-2 rounded font-medium text-gray-600 hover:text-blue-600"
               >
                 Pelatihan yang Diselesaikan
               </Link>
@@ -88,6 +83,7 @@ export default function AktivitasBelajar() {
           <AktivitasBelajarCard />
         </main>
       </div>
+    </div>
     </div>
   );
 }
