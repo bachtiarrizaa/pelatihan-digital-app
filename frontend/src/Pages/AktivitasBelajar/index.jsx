@@ -2,16 +2,13 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function AktivitasBelajar() {
-  const [isOpen, setIsOpen] = useState(true); // default terbuka di desktop
-  const [isMobileOpen, setIsMobileOpen] = useState(false); // khusus mobile
+  const [isOpen, setIsOpen] = useState(true);
 
   const toggleDesktopSidebar = () => {
     setIsOpen(!isOpen);
   };
 
-  const toggleMobileSidebar = () => {
-    setIsMobileOpen(!isMobileOpen);
-  };
+
 
   return (
     <div className="max-w-7xl mx-auto px-4 pb-4 pt-28 relative">
@@ -20,13 +17,6 @@ export default function AktivitasBelajar() {
         <span>
           Aktivitas <span className="text-gray-800">Belajar</span>
         </span>
-        {/* Tombol menu mobile */}
-        <button
-          className="md:hidden px-3 py-1 bg-blue-600 text-white rounded-md"
-          onClick={toggleMobileSidebar}
-        >
-          Menu
-        </button>
       </h1>
 
       <div className="flex mt-4">
@@ -38,7 +28,7 @@ export default function AktivitasBelajar() {
             h-[calc(100vh-7rem)]`}
         >
           {/* Item 1 */}
-          <div className="flex items-center justify-between py-2 px-2 text-gray-700">
+          <div className="flex items-center justify-between py-2 text-gray-700">
             <span
               className={`whitespace-nowrap overflow-hidden transition-opacity duration-300 ${
                 isOpen ? "opacity-100" : "opacity-0"
@@ -50,7 +40,7 @@ export default function AktivitasBelajar() {
             </span>
             <button onClick={toggleDesktopSidebar}>
               <i
-                className={`fa-solid fa-angles-right transform transition-transform duration-300 ${
+                className={`fa-solid fa-angles-right mr-4 transform transition-transform duration-300 ${
                   !isOpen ? "rotate-180" : ""
                 }`}
               ></i>
@@ -58,7 +48,7 @@ export default function AktivitasBelajar() {
           </div>
 
           {/* Item 2 */}
-          <div className="flex items-center py-2 px-2 text-gray-700">
+          <div className="flex items-center py-2 text-gray-700">
             <span
               className={`whitespace-nowrap overflow-hidden transition-opacity duration-300 ${
                 isOpen ? "opacity-100" : "opacity-0"
@@ -114,40 +104,6 @@ export default function AktivitasBelajar() {
           </div>
         </main>
       </div>
-
-      {/* Sidebar Mobile (Overlay) */}
-      {isMobileOpen && (
-        <>
-          {/* Backdrop */}
-          <div
-            className="fixed inset-0 bg-black/40 z-40 md:hidden"
-            onClick={toggleMobileSidebar}
-          ></div>
-
-          {/* Drawer */}
-          <aside
-            className={`fixed top-28 left-0 bg-white border-r shadow-lg z-50 
-              transition-transform duration-500 ease-in-out
-              h-[calc(100vh-7rem)] w-60
-              ${isMobileOpen ? "translate-x-0" : "-translate-x-full"}`}
-          >
-            <div className="flex items-center justify-between py-2 px-2 text-gray-700">
-              <Link className="font-medium" to="#">
-                Pelatihan yang Dipelajari
-              </Link>
-              <button onClick={toggleMobileSidebar}>
-                <i className="fa-solid fa-xmark"></i>
-              </button>
-            </div>
-
-            <div className="flex items-center py-2 px-2 text-gray-700">
-              <Link className="font-medium" to="#">
-                Pelatihan yang Diselesaikan
-              </Link>
-            </div>
-          </aside>
-        </>
-      )}
     </div>
   );
 }
