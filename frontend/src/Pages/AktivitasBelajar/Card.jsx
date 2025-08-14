@@ -97,7 +97,6 @@ function AccordionItem({ modul, isOpen, onToggle, isLast }) {
   );
 }
 
-
 export default function AktivitasBelajarCard() {
   const [openIndex, setOpenIndex] = useState(null);
 

@@ -11,7 +11,7 @@ export default function SideBarAktivitasBelajar() {
       {/* Sidebar Desktop */}
       <aside
         className={`hidden px-4 md:flex flex-col bg-white border-r overflow-hidden transition-[width] duration-500 ease-out
-                ${isOpen ? "w-60" : "w-12"}`}
+        ${isOpen ? "w-60" : "w-12"}`}
       >
         {/* Header Menu */}
         <div
@@ -43,7 +43,7 @@ export default function SideBarAktivitasBelajar() {
               end
               className={({ isActive }) =>
                 `block p-2 rounded font-medium ${
-                  isActive ? "text-blue-600" : "text-gray-600 hover:text-blue-600"
+                  isActive ? "text-blue-600" : "text-gray-600 hover:text-gray-400"
                 }`
               }
             >
@@ -54,7 +54,7 @@ export default function SideBarAktivitasBelajar() {
               to="/aktivitas-belajar/selesai"
               className={({ isActive }) =>
                 `block p-2 rounded font-medium ${
-                  isActive ? "text-blue-600" : "text-gray-600 hover:text-blue-600"
+                  isActive ? "text-blue-600" : "text-gray-600 hover:text-gray-400"
                 }`
               }
             >

@@ -20,9 +20,9 @@ export default function AktivitasBelajar() {
               to="/aktivitas-belajar"
               end
               className={({ isActive }) =>
-                `px-4 py-2 text-sm sm:text-base text-center font-medium whitespace-nowrap rounded-lg ${
+                `px-2 py-2 text-sm sm:text-base text-center font-medium whitespace-nowrap rounded-lg ${
                   isActive
-                    ? "bg-blue-100 text-blue-600"
+                    ? "text-blue-600 bg-white"
                     : "bg-white text-gray-600 hover:bg-gray-100"
                 }`
               }
@@ -33,9 +33,9 @@ export default function AktivitasBelajar() {
             <NavLink
               to="/aktivitas-belajar/selesai"
               className={({ isActive }) =>
-                `px-4 py-2 text-sm sm:text-base text-center font-medium whitespace-nowrap rounded-lg ${
+                `px-2 py-2 text-sm sm:text-base text-center font-medium whitespace-nowrap rounded-lg ${
                   isActive
-                    ? "bg-blue-100 text-blue-600"
+                    ? "text-blue-600 bg-white"
                     : "bg-white text-gray-600 hover:bg-gray-100"
                 }`
               }
@@ -44,7 +44,6 @@ export default function AktivitasBelajar() {
             </NavLink>
           </div>
         </div>
-
 
         <div className="flex mt-3">
           
