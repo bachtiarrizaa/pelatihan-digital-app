@@ -21,7 +21,7 @@ export default function AktivitasBelajarSelesai() {
               className={({ isActive }) =>
                 `px-2 py-2 text-sm sm:text-base text-center font-medium whitespace-nowrap rounded-lg ${
                   isActive
-                    ? "text-blue-600"
+                    ? "text-blue-600 bg-white"
                     : "bg-white text-gray-600 hover:bg-gray-100"
                 }`
               }

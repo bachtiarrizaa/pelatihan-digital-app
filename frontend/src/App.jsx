@@ -12,6 +12,8 @@ import MainLayout from './Layout/MainLayout';
 import Index from './Pages/Pembelajaran';
 import AktivitasBelajar from './Pages/AktivitasBelajar';
 import AktivitasBelajarSelesai from './Pages/AktivitasBelajar/Selesai';
+import UbahKataSandi from './Pages/Profile/UbahKataSandi';
+import ResetKataSandi from './Pages/Profile/ResetKataSandi';
 
 export default function App() {
   return (
@@ -31,6 +33,8 @@ export default function App() {
       {/* Halaman-halaman tanpa layout */}
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/ubah-password" element={<UbahKataSandi />} />
+      <Route path="/reset-password" element={<ResetKataSandi />} />
       <Route path="/admin" element={<AdminDashboard />} />
 
       {/* 404 */}

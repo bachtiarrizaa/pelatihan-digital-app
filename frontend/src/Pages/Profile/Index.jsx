@@ -114,7 +114,7 @@ export default function Profile() {
           <h2 className="text-lg font-bold sm:text-xl text-gray-800 mb-2">Lainnya</h2>
           <div>
             <ActionItem icon="fa-solid fa-circle-info" label="Tentang Aplikasi" to="/about" />
-            <ActionItem icon="fa-solid fa-phone" label="Ubah Kata Sandi" to="/password/change" />
+            <ActionItem icon="fa-solid fa-phone" label="Ubah Kata Sandi" to="/ubah-password" />
             <LogoutButton onClick={() => setShowModal(true)} />
           </div>
         </section>
