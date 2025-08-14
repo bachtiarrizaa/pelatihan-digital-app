@@ -74,8 +74,6 @@ export default function Navbar() {
           <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/">Beranda</Link>
           <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/daftar-pelatihan">Daftar Pelatihan</Link>
           <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/feedback">Feedback</Link>
-          {/* <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/contact">Contact</Link>
-          <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/faq">FAQ</Link> */}
         </div>
 
         {user ? (

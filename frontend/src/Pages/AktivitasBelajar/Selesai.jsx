@@ -1,9 +1,9 @@
 import AktivitasBelajarCard from "./Card";
 import SideBarAktivitasBelajar from "../../Components/SideBarAktivitasBelajar";
 import { NavLink } from "react-router-dom";
+import CardSelesai from "./CardSelesai";
 
-export default function AktivitasBelajar() {
-
+export default function AktivitasBelajarSelesai() {
   return (
     <div className="bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 pb-4 pt-28 relative">
@@ -52,7 +52,7 @@ export default function AktivitasBelajar() {
 
           {/* Konten utama */}
           <main className="flex-1 px-2 sm:px-4">
-            <AktivitasBelajarCard />
+            <CardSelesai />
           </main>
         </div>
       </div>

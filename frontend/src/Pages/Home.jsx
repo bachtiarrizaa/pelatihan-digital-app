@@ -5,7 +5,7 @@ import Partners from "../Components/Partners";
 export default function Home() {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
 
       <Heroes />
       
