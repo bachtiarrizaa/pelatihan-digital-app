@@ -3,20 +3,34 @@ import { NavLink } from "react-router-dom";
 
 export default function SideBarAktivitasBelajar() {
   const [isOpen, setIsOpen] = useState(true);
+  const [showContent, setShowContent] = useState(true);
+  const [contentVisible, setContentVisible] = useState(true);
 
-  const toggleDesktopSidebar = () => setIsOpen(!isOpen);
+  const toggleDesktopSidebar = () => {
+    if (isOpen) {
+      setContentVisible(false);
+      setTimeout(() => {
+        setShowContent(false);
+        setIsOpen(false);
+      }, 300);
+    } else {
+      setIsOpen(true);
+      setShowContent(true);
+      setTimeout(() => setContentVisible(true), 300);
+    }
+  };
 
   return (
     <>
       {/* Sidebar Desktop */}
       <aside
-        className={`hidden px-4 md:flex flex-col bg-white border-r overflow-hidden transition-[width] duration-500 ease-out
+        className={`hidden px-4 md:flex flex-col bg-white border-r overflow-hidden transition-[width] duration-300 ease-out
         ${isOpen ? "w-60" : "w-12"}`}
       >
         {/* Header Menu */}
         <div
           className={`flex items-center ${
-            isOpen ? "justify-between py-2 border-b" : "justify-center py-2"
+            isOpen ? "justify-between py-2 border-b" : "justify-center py-2 border-b"
           }`}
         >
           {isOpen && (
@@ -28,7 +42,7 @@ export default function SideBarAktivitasBelajar() {
           )}
           <button onClick={toggleDesktopSidebar}>
             <i
-              className={`fa-solid fa-angles-right overflow-hidden transition-opacity duration-300 ${
+              className={`fa-solid fa-angles-right transition-transform duration-300 ${
                 !isOpen ? "rotate-180" : ""
               }`}
             ></i>
@@ -36,8 +50,12 @@ export default function SideBarAktivitasBelajar() {
         </div>
 
         {/* Menu Items */}
-        {isOpen && (
-          <nav className="mt-2 whitespace-nowrap overflow-hidden transition-opacity duration-300">
+        {showContent && (
+          <nav
+            className={`mt-2 whitespace-nowrap overflow-hidden transition-opacity duration-300 ${
+              contentVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+            }`}
+          >
             <NavLink
               to="/aktivitas-belajar"
               end

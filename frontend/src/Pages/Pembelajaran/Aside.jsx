@@ -49,21 +49,19 @@ const pelatihan = {
 export default function AsidePembelajaran() {
   const [isOpen, setIsOpen] = useState(true);
   const [showContent, setShowContent] = useState(true);
-  const [contentVisible, setContentVisible] = useState(true); // untuk atur class opacity
+  const [contentVisible, setContentVisible] = useState(true);
 
   const toggleSidebar = () => {
     if (isOpen) {
-      // Kalau nutup → fade out dulu
-      setContentVisible(false); // opacity 100 → 0
+      setContentVisible(false);
       setTimeout(() => {
-        setShowContent(false); // setelah animasi selesai, baru benar-benar hilang
+        setShowContent(false);
         setIsOpen(false);
-      }, 300); // sama dengan duration-300
+      }, 300);
     } else {
-      // Kalau buka → sidebar melebar dulu, lalu isi fade in
       setIsOpen(true);
       setShowContent(true);
-      setTimeout(() => setContentVisible(true), 100); // tunggu width animasi
+      setTimeout(() => setContentVisible(true), 300);
     }
   };
 
@@ -87,7 +85,7 @@ export default function AsidePembelajaran() {
         </button>
 
         {isOpen && (
-          <div className="flex justify-end flex-1 pr-6">
+          <div className="flex justify-end flex-1 pr-4">
             <span className="inline-block w-1 h-1 bg-blue-500 rounded-full"></span>
             <span className="inline-block w-3 h-1 mx-1 bg-blue-500 rounded-full"></span>
             <span className="inline-block w-24 h-1 bg-blue-500 rounded-full"></span>
