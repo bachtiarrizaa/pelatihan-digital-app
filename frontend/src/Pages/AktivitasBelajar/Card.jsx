@@ -109,12 +109,12 @@ export default function AktivitasBelajarCard() {
       {/* Header */}
       <div className="px-4 sm:px-6 pb-4 mt-2 items-center justify-between border-b-2">
         <div className="flex items-center justify-between">
-          <Link to="#" className="text-lg sm:text-xl font-bold text-gray-700">
+          <h2 className="text-lg sm:text-xl font-bold text-gray-700">
             {pelatihan.title}
-          </Link>
-          <button className="px-3 py-1 text-sm text-blue-600 bg-white rounded hover:bg-gray-50 border border-blue-600">
+          </h2>
+          <Link to="/pembelajaran" className="px-3 py-1 text-sm text-blue-600 bg-white rounded hover:bg-gray-50 border border-blue-600">
             Mulai
-          </button>
+          </Link>
         </div>
         <div className="flex items-start gap-2 sm:gap-1 text-gray-500 mt-2">
           <i className="fa-regular fa-clock text-sm"></i>
