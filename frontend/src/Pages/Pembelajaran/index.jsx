@@ -51,9 +51,10 @@ const pelatihan = {
 export default function IndexPembelajaran() {
   return (
     <>
+      {/* Header */}
       <HeaderPembelajaran />
 
-      <div className="flex pt-24">
+      <div className="flex pt-20">
         {/* MATERI PEMBELAJARAN */}
         <main className="flex-1 px-8 pb-8">
           <h2 className="text-xl font-bold mb-4">Materi Pembelajaran</h2>

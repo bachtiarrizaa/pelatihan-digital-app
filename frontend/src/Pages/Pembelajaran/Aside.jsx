@@ -58,13 +58,13 @@ export default function AsidePembelajaran() {
       {/* Header Sidebar */}
       <div
         className={`flex items-center ${
-          isOpen ? "justify-between px-4 py-3 border-b" : "justify-center py-3"
+          isOpen ? "justify-between px-4 pb-3 pt-5 border-b" : "justify-center pb-3 pt-5"
         }`}
       >
         {/* Toggle Button di kiri */}
         <button onClick={toggleSidebar} className="mr-2">
           <i
-            className={`fa-solid fa-angles-left transition-transform duration-300 ${
+            className={`fa-solid fa-angles-left overflow-hidden transition-opacity duration-300 ${
               !isOpen ? "rotate-180" : ""
             }`}
           ></i>
@@ -89,7 +89,7 @@ export default function AsidePembelajaran() {
         {pelatihan.modul.map((modul, i) => (
           <div key={i} className="mt-3">
             <label className="text-sm font-semibold text-gray-700">{modul.nama}</label>
-            <div className="flex flex-col text-gray-600 text-sm mt-1">
+            <div className="flex flex-col text-gray-600 text-sm">
               {modul.materi.map((materi, j) => (
                 <NavLink
                   key={j}
