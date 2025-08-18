@@ -1,7 +1,8 @@
 // import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function ResetKataSandi() {
+  const navigate = useNavigate();
   return (
     <section className="bg-white">
       <div className="container px-6 pt-36 mx-auto">
@@ -44,15 +45,16 @@ export default function ResetKataSandi() {
 
               {/* Tombol */}
               <div className="mt-8 flex flex-col items-center md:flex-row md:space-x-6 w-full">
-                <Link
-                  to="/"
+                <button
+                  type='button'
+                  onClick={() => navigate(-1)}
                   className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white text-center capitalize bg-gray-400 rounded-lg md:w-1/2 hover:bg-gray-300"
                 >
                   Batal
-                </Link>
+                </button>
                 <button
                   type="submit"
-                  className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize bg-blue-500 rounded-lg md:w-1/2 hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+                  className="mt-2 sm:mt-0 w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize bg-blue-500 rounded-lg md:w-1/2 hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50"
                 >
                   Submit
                 </button>

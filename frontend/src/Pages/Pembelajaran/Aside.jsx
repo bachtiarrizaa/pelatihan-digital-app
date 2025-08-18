@@ -79,7 +79,7 @@ export default function AsidePembelajaran() {
         <button onClick={toggleSidebar} className="mr-2">
           <i
             className={`fa-solid fa-angles-left transition-transform duration-300 ${
-              !isOpen ? "rotate-180" : ""
+              !isOpen ? "-rotate-180" : ""
             }`}
           ></i>
         </button>
@@ -106,6 +106,7 @@ export default function AsidePembelajaran() {
               <div className="flex flex-col text-gray-600 text-sm">
                 {modul.materi.map((materi, j) => (
                   <NavLink key={j} to="#" className="hover:text-blue-700 mt-1 transition-colors">
+                    <i class="fa-solid fa-circle-notch mr-1 text-gray-300"></i>
                     {materi}
                   </NavLink>
                 ))}

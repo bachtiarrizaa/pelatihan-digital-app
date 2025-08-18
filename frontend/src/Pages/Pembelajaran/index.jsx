@@ -1,5 +1,6 @@
 import HeaderPembelajaran from "./Header";
 import AsidePembelajaran from "./Aside";
+import Footer from "../../Components/Footer";
 
 const pelatihan = {
   title: "Frontend Web Development",
@@ -74,6 +75,8 @@ export default function IndexPembelajaran() {
         {/* Sidebar */}
         <AsidePembelajaran />
       </div>
+
+      <Footer />
     </>
   );
 }
