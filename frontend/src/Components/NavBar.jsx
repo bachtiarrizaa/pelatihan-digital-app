@@ -71,20 +71,22 @@ export default function Navbar() {
         } absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white shadow-md lg:shadow-none lg:mt-0 lg:p-0 lg:top-0 lg:bg-transparent lg:relative lg:w-auto lg:opacity-100 lg:translate-x-0 lg:flex lg:items-center`}
       >
         <div className="flex flex-col space-y-4 lg:mt-0 lg:flex-row lg:space-y-0">
-          <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/">Beranda</Link>
-          <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/daftar-pelatihan">Daftar Pelatihan</Link>
-          <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/feedback">Feedback</Link>
+          <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/" onClick={() => setIsOpen(false)}>Beranda</Link>
+          <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/daftar-pelatihan" onClick={() => setIsOpen(false)}>Daftar Pelatihan</Link>
+          <Link className="text-gray-700 hover:text-blue-500 lg:mx-6" to="/feedback" onClick={() => setIsOpen(false)}>Feedback</Link>
         </div>
 
         {user ? (
           <Link
-            to="/profile" 
+            to="/profile"
+            onClick={() => setIsOpen(false)}
             className="block px-5 py-2 mt-4 text-center text-blue-600 capitalize border border-blue-600 hover:bg-gray-50 rounded-md lg:mt-0 lg:w-auto ml-4"
             >
               Halo, {user.name}
             </Link>
         ) : (
           <Link
+            onClick={() => setIsOpen(false)}
             className="block px-5 py-2 mt-4 text-center text-blue-600 capitalize transition-colors duration-300 transform border border-blue-600 rounded-md hover:bg-gray-50 lg:mt-0 lg:w-auto ml-4"
             to="/login"
           >

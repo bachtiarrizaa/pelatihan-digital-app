@@ -48,7 +48,7 @@ export default function ResetKataSandi() {
                 <button
                   type='button'
                   onClick={() => navigate(-1)}
-                  className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white text-center capitalize bg-gray-400 rounded-lg md:w-1/2 hover:bg-gray-300"
+                  className="w-full px-6 py-3 text-sm font-medium tracking-wide text-gray-700 border border-gray-200 text-center capitalize bg-white rounded-lg md:w-1/2 hover:bg-gray-100"
                 >
                   Batal
                 </button>
