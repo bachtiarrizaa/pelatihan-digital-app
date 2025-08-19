@@ -14,6 +14,7 @@ import AktivitasBelajar from './Pages/AktivitasBelajar';
 import AktivitasBelajarSelesai from './Pages/AktivitasBelajar/Selesai';
 import UbahKataSandi from './Pages/Profile/UbahKataSandi';
 import ResetKataSandi from './Pages/Profile/ResetKataSandi';
+import IndexAdmin from './Pages/Admin/Index';
 
 export default function App() {
   return (
@@ -35,7 +36,7 @@ export default function App() {
       <Route path="/pembelajaran" element={<IndexPembelajaran />} />
       <Route path="/ubah-password" element={<UbahKataSandi />} />
       <Route path="/reset-password" element={<ResetKataSandi />} />
-      <Route path="/admin" element={<AdminDashboard />} />
+      <Route path="/admin" element={<IndexAdmin />} />
 
       {/* 404 */}
       <Route path="*" element={<NotFound />} />

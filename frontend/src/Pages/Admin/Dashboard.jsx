@@ -6,13 +6,12 @@ export default function AdminDashboard() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
 
-  // Ambil user dari localStorage saat pertama render
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     if (storedUser) {
       const parsedUser = JSON.parse(storedUser);
       if (parsedUser.role !== 'admin') {
-        navigate('/'); // kalau bukan admin, redirect
+        navigate('/');
       } else {
         setUser(parsedUser);
       }
@@ -31,7 +30,6 @@ export default function AdminDashboard() {
         },
       });
 
-      // Bersihkan localStorage & redirect
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       navigate('/login');
