@@ -1,18 +1,19 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-function MenuItem({ icon, label }) {
+// 🔹 Komponen MenuItem (reusable)
+function MenuItem({ icon, label, isOpen }) {
+  const [open, setOpen] = useState(false);
   const contentRef = useRef(null);
-  const [isOpen, setIsOpen] = useState(false);
   const [height, setHeight] = useState(0);
 
   useEffect(() => {
-    if (isOpen && contentRef.current) {
+    if (open && contentRef.current) {
       setHeight(contentRef.current.scrollHeight);
     } else {
       setHeight(0);
     }
-  }, [isOpen]);
+  }, [open, isOpen]);
 
   return (
     <div>
@@ -20,34 +21,38 @@ function MenuItem({ icon, label }) {
       <div className="px-3 flex items-center justify-between text-gray-600 mt-4">
         <div className="flex items-center gap-x-2">
           <i className={`fa-solid ${icon}`} />
-          <span className="font-medium whitespace-nowrap transition-all duration-300">
+          <span
+            className={`font-medium whitespace-nowrap transform transition-all duration-300
+              ${isOpen ? "opacity-100 translate-x-0 visible" : "opacity-0 -translate-x-3 invisible"}`}
+          >
             {label}
           </span>
         </div>
 
-        {/* Tombol expand */}
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="transition-transform duration-300"
-        >
-          <i className={`fa-solid fa-angle-${isOpen ? "up" : "down"}`} />
-        </button>
+        {/* Tombol expand submenu */}
+        {isOpen && (
+          <button
+            onClick={() => setOpen(!open)}
+            className="transition-transform duration-300"
+          >
+            <i className={`fa-solid fa-angle-${open ? "up" : "down"}`} />
+          </button>
+        )}
       </div>
 
-      {/* Submenu wrapper */}
+      {/* Submenu */}
       <div
-        ref={contentRef}
-        className="overflow-hidden transition-[max-height] duration-500 ease-in-out text-gray-600"
+        className="overflow-hidden transition-all duration-500 ease-in-out text-gray-600"
         style={{ maxHeight: `${height}px` }}
       >
-        <ul className="ml-10 py-2 text-sm">
-          <li className="mb-1">
+        <ul ref={contentRef} className="ml-10 py-2 text-sm space-y-1">
+          <li>
             <Link to="#" className="block hover:text-blue-600">Lihat Semua</Link>
           </li>
-          <li className="mb-1">
+          <li>
             <Link to="#" className="block hover:text-blue-600">Tambah Baru</Link>
           </li>
-          <li className="last:mb-0">
+          <li>
             <Link to="#" className="block hover:text-blue-600">Edit</Link>
           </li>
         </ul>
@@ -56,19 +61,16 @@ function MenuItem({ icon, label }) {
   );
 }
 
-// 🔹 Komponen Utama AsideDashboard
+// 🔹 Komponen AsideDashboard
 export default function AsideDashboard() {
   const [isOpen, setIsOpen] = useState(true);
 
-  const toggleSidebar = () => {
-    setIsOpen((prev) => !prev);
-  };
+  const toggleSidebar = () => setIsOpen((prev) => !prev);
 
   return (
     <aside
-      className={`flex flex-col min-h-screen px-6 py-3 overflow-y-auto bg-white border-r transition-all duration-300
-        ${isOpen ? "w-60" : "w-16"}
-      `}
+      className={`flex flex-col h-screen px-6 py-3 overflow-y-auto bg-white border-r transition-all duration-300
+        ${isOpen ? "w-60" : "w-16"}`}
     >
       <div className="flex flex-col justify-between flex-1">
         <nav className="-mx-3">
@@ -91,11 +93,11 @@ export default function AsideDashboard() {
           </div>
 
           {/* Menu Items */}
-          <MenuItem icon="fa-user" label="User" />
-          <MenuItem icon="fa-chalkboard" label="Program Pelatihan" />
-          <MenuItem icon="fa-book-open" label="Materi Pelatihan" />
-          <MenuItem icon="fa-layer-group" label="Kategori Pelatihan" />
-          <MenuItem icon="fa-comment-dots" label="Feedback" />
+          <MenuItem icon="fa-user" label="User" isOpen={isOpen} />
+          <MenuItem icon="fa-chalkboard" label="Program Pelatihan" isOpen={isOpen} />
+          <MenuItem icon="fa-book-open" label="Materi Pelatihan" isOpen={isOpen} />
+          <MenuItem icon="fa-layer-group" label="Kategori Pelatihan" isOpen={isOpen} />
+          <MenuItem icon="fa-comment-dots" label="Feedback" isOpen={isOpen} />
         </nav>
       </div>
     </aside>
