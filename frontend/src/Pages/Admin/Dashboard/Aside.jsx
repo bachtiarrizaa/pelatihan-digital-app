@@ -1,55 +1,77 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+// 🔹 Komponen MenuItem terpisah
+function MenuItem({ icon, label, isOpenSidebar }) {
+  const [open, setOpen] = useState(false);
+  const contentRef = useRef(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (open && contentRef.current) {
+      setHeight(contentRef.current.scrollHeight);
+    } else {
+      setHeight(0);
+    }
+  }, [open]);
+
+  return (
+    <div>
+      {/* Menu utama */}
+      <div className="px-3 flex items-center justify-between text-gray-600 mt-2 min-h-[36px]">
+        <div className="flex items-center gap-x-2">
+          <i className={`fa-solid ${icon}`} />
+          <span
+            className={`font-medium whitespace-nowrap transform transition-all duration-300
+              ${isOpenSidebar ? "opacity-100 translate-x-0 visible" : "opacity-0 -translate-x-3 invisible"}
+            `}
+          >
+            {label}
+          </span>
+        </div>
+
+        {/* Tombol expand submenu */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="transition-transform duration-300"
+        >
+          <i className={`fa-solid fa-angle-${open ? "up" : "down"}`} />
+        </button>
+      </div>
+
+      {/* Submenu CRUD */}
+      <div
+        className="overflow-hidden transition-[max-height] duration-500 ease-in-out text-gray-600"
+        style={{ maxHeight: open ? `${height}px` : "0px" }}
+      >
+        <ul ref={contentRef} className="ml-10 py-2 text-sm">
+          <li className="mb-1">
+            <Link to="#" className="block hover:text-blue-600">
+              Lihat Semua
+            </Link>
+          </li>
+          <li className="mb-1">
+            <Link to="#" className="block hover:text-blue-600">
+              Tambah Baru
+            </Link>
+          </li>
+          <li>
+            <Link to="#" className="block hover:text-blue-600">
+              Edit
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+// 🔹 Komponen Utama AsideDashboard
 export default function AsideDashboard() {
   const [isOpen, setIsOpen] = useState(true);
 
   const toggleSidebar = () => {
     setIsOpen((prev) => !prev);
-  };
-
-  // Komponen MenuItem dengan Submenu
-  const MenuItem = ({ icon, label }) => {
-    const [open, setOpen] = useState(false);
-
-    return (
-      <div>
-        <div className="px-3 flex items-center justify-between text-gray-600 mt-2 min-h-[32px]">
-          <div className="flex items-center gap-x-2">
-            <i className={`fa-solid ${icon}`} />
-            <span
-              className={`font-medium whitespace-nowrap transform transition-opacity transition-transform duration-300
-                ${isOpen ? "opacity-100 translate-x-0 visible" : "opacity-0 -translate-x-3 invisible"}`}
-            >
-              {label}
-            </span>
-          </div>
-          <button
-            onClick={() => setOpen(!open)}
-            className={`transition-opacity duration-300 transform
-              ${isOpen ? "opacity-100 translate-x-0 visible" : "opacity-0 -translate-x-3 invisible pointer-events-none"}`}
-          >
-            <i
-              className={`fa-solid fa-angle-${open ? "up" : "down"}`}
-            ></i>
-          </button>
-        </div>
-
-        {/* Submenu CRUD */}
-        {isOpen && isOpen && (
-          <div
-            className={`ml-10 overflow-hidden transition-all duration-300 ease-in-out text-gray-600
-              ${open ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}
-            `}
-          >
-            <Link to="#" className="block hover:text-blue-600">Lihat Semua</Link>
-            <Link to="#" className="block hover:text-blue-600">Tambah Baru</Link>
-            <Link to="#" className="block hover:text-blue-600">Edit</Link>
-          </div>
-        )}
-
-      </div>
-    );
   };
 
   return (
@@ -79,11 +101,11 @@ export default function AsideDashboard() {
           </div>
 
           {/* Menu Items */}
-          <MenuItem icon="fa-user" label="User" />
-          <MenuItem icon="fa-chalkboard" label="Program Pelatihan" />
-          <MenuItem icon="fa-book-open" label="Materi Pelatihan" />
-          <MenuItem icon="fa-layer-group" label="Kategori Pelatihan" />
-          <MenuItem icon="fa-comment-dots" label="Feedback" />
+          <MenuItem icon="fa-user" label="User" isOpenSidebar={isOpen} />
+          <MenuItem icon="fa-chalkboard" label="Program Pelatihan" isOpenSidebar={isOpen} />
+          <MenuItem icon="fa-book-open" label="Materi Pelatihan" isOpenSidebar={isOpen} />
+          <MenuItem icon="fa-layer-group" label="Kategori Pelatihan" isOpenSidebar={isOpen} />
+          <MenuItem icon="fa-comment-dots" label="Feedback" isOpenSidebar={isOpen} />
         </nav>
       </div>
     </aside>
