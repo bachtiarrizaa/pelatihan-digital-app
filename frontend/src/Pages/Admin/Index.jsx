@@ -37,14 +37,12 @@ export default function IndexAdmin() {
 
       {/* Sidebar + Konten */}
       <div className="flex flex-1 pt-16 h-full">
-        {/* Sidebar dengan scroll sendiri */}
-        <aside className="w-60 h-full overflow-y-auto overflow-x-hidden bg-white">
+        <aside className="h-full overflow-y-auto overflow-x-hidden bg-white">
           {/* <AsideDashboard /> */}
           <SidebarAdmin />
         </aside>
 
-        {/* Konten utama dengan scroll sendiri */}
-        <main className="flex-1 h-full overflow-y-auto overflow-x-hidden p-6 bg-white">
+        <main className="flex-1 h-full overflow-y-auto overflow-x-hidden p-6 bg-white w-full">
           <div className="h-[2000px]">
             Konten admin di sini... (tes scroll panjang)
           </div>

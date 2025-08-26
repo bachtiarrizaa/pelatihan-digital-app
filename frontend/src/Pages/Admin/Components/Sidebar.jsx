@@ -5,12 +5,12 @@ import { NavLink } from "react-router-dom";
 function MenuItemWithDropdown({ icon, label, isOpen }) {
   return (
     <div
-      className="flex items-center justify-between px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg hover:bg-gray-100 hover:text-gray-700 cursor-pointer"
+      className="flex items-center justify-between px-3 py-2 text-gray-800 transition-colors duration-300 transform rounded-lg hover:bg-gray-100 hover:text-blue-600 cursor-pointer"
     >
       <div className="flex items-center">
         <i className={`fa-solid ${icon} min-w-[20px] text-center`} />
         <span
-          className={`ml-2 text-sm font-medium whitespace-nowrap transition-all duration-300 
+          className={`ml-2 text-sm font-lg whitespace-nowrap transition-all duration-300 
             ${isOpen ? "opacity-100 w-auto" : "opacity-0 w-0 overflow-hidden"}
           `}
         >
@@ -28,21 +28,20 @@ function MenuItemWithDropdown({ icon, label, isOpen }) {
   );
 }
 
-// MenuItem untuk yang simple (tanpa angle-down)
-function MenuItemSimple({ icon, label, isOpen }) {
+function MenuItem({ icon, label, isOpen }) {
   return (
-    <NavLink
-      className="flex items-center px-3 py-2 text-gray-600 transition-colors duration-300 transform rounded-lg hover:bg-gray-100 hover:text-gray-700 cursor-pointer"
+    <div
+      className="flex items-center px-3 py-2 text-gray-800 transition-colors duration-300 transform rounded-lg hover:bg-gray-100 hover:text-blue-600 cursor-pointer"
     >
       <i className={`fa-solid ${icon} min-w-[20px] text-center`} />
       <span
-        className={`ml-2 text-sm font-medium whitespace-nowrap transition-all duration-300 
+        className={`ml-2 text-sm font-lg whitespace-nowrap transition-all duration-300 
           ${isOpen ? "opacity-100 w-auto" : "opacity-0 w-0 overflow-hidden"}
         `}
       >
         {label}
       </span>
-    </NavLink>
+    </div>
   );
 }
 
@@ -83,9 +82,8 @@ export default function AsideDashboard() {
         </nav>
 
         <div className="mt-12">
-          {/* Menu simple tanpa dropdown */}
-          <MenuItemSimple icon="fa-gear" label="Pengaturan" isOpen={isOpen} />
-          <MenuItemSimple icon="fa-arrow-right-from-bracket" label="Keluar" isOpen={isOpen} />
+          <MenuItem icon="fa-gear" label="Pengaturan" isOpen={isOpen} />
+          <MenuItem icon="fa-arrow-right-from-bracket" label="Keluar" isOpen={isOpen} />
         </div>
       </div>
     </div>
