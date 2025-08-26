@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-// 🔹 Komponen MenuItem (reusable)
 function MenuItem({ icon, label, isOpen }) {
   const [open, setOpen] = useState(false);
   const contentRef = useRef(null);
@@ -61,7 +60,6 @@ function MenuItem({ icon, label, isOpen }) {
   );
 }
 
-// 🔹 Komponen AsideDashboard
 export default function AsideDashboard() {
   const [isOpen, setIsOpen] = useState(true);
 
