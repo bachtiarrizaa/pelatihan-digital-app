@@ -37,6 +37,7 @@ export default function App() {
       <Route path="/ubah-password" element={<UbahKataSandi />} />
       <Route path="/reset-password" element={<ResetKataSandi />} />
       <Route path="/admin" element={<IndexAdmin />} />
+      {/* <Route path="/admin" element={<AdminDashboard />} /> */}
 
       {/* 404 */}
       <Route path="*" element={<NotFound />} />

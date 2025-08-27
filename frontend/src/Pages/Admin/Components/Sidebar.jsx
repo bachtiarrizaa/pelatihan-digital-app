@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import axios from '../../../lib/axios';
 
 function MenuItemWithDropdown({ icon, label, isOpen, submenu }) {
   const [open, setOpen] = useState(false);
@@ -13,7 +14,7 @@ function MenuItemWithDropdown({ icon, label, isOpen, submenu }) {
         <div className="flex items-center">
           <i className={`fa-solid ${icon} min-w-[20px] text-center`} />
           <span
-            className={`ml-2 text-sm font-lg whitespace-nowrap transition-all duration-300 
+            className={`ml-2 text-sm font-lg whitespace-nowrap transition-all duration-300
               ${isOpen ? "opacity-100 w-auto" : "opacity-0 w-0 overflow-hidden"}
             `}
           >
@@ -71,14 +72,53 @@ function MenuItem({ icon, label, isOpen, to }) {
   );
 }
 
+function LogoutButton({ icon, label, isOpen, onLogout }) {
+  return (
+    <button
+      type="button"
+      onClick={onLogout}
+      className="flex items-center w-full px-3 py-2 rounded-lg transition-colors duration-300 cursor-pointer text-gray-800 hover:bg-gray-100 hover:text-blue-600"
+    >
+      <i className={`fa-solid ${icon} min-w-[20px] text-center`} />
+      <span
+        className={`ml-2 text-sm font-lg whitespace-nowrap transition-all duration-300 
+          ${isOpen ? "opacity-100 w-auto" : "opacity-0 w-0 overflow-hidden"}
+        `}
+      >
+        {label}
+      </span>
+    </button>
+  );
+}
+
 export default function AsideDashboard() {
   const [isOpen, setIsOpen] = useState(true);
   const toggleSidebar = () => setIsOpen((prev) => !prev);
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      const token = localStorage.getItem('token');
+
+      await axios.post('/auth/logout', {}, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      navigate('/login');
+    } catch (error) {
+      console.error('Logout gagal:', error);
+    }
+  };
+
 
   return (
     <div
       className={`flex flex-col min-h-full px-3 pt-3 pb-6 bg-white border-r transition-all duration-300
-      ${isOpen ? "w-60" : "w-16"}`}
+      ${isOpen ? "w-56" : "w-16"}`}
     >
       <div className="flex flex-col justify-between flex-1">
         <nav className="space-y-3">
@@ -148,8 +188,8 @@ export default function AsideDashboard() {
         </nav>
 
         <div className="mt-12">
-          <MenuItem icon="fa-gear" label="Pengaturan" isOpen={isOpen} to="/settings" />
-          <MenuItem icon="fa-arrow-right-from-bracket" label="Keluar" isOpen={isOpen} to="/logout" />
+          <MenuItem icon="fa-gear" label="Pengaturan" isOpen={isOpen} to="/settings"/>
+          <LogoutButton icon="fa-arrow-right-from-bracket" isOpen={isOpen} label="Keluar" onLogout={handleLogout} />
         </div>
       </div>
     </div>
