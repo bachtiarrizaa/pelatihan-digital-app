@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import Navbar from '../../Components/NavBar';
 
 export default function Profile() {
   const [user, setUser] = useState(null);

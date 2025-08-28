@@ -1,7 +1,25 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SidebarAdmin from "./Components/Sidebar";
+import { useEffect, useState } from "react";
 
 export default function IndexAdmin() {
+  const navigate = useNavigate();
+  const [user, setUser] = useState();
+  
+  useEffect(() => {
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      if (parsedUser.role !== 'admin') {
+        navigate('/');
+      } else {
+        setUser(parsedUser);
+      }
+    } else {
+      navigate('/login');
+    }
+  }, [navigate]);
+
   return (
     <div className="h-screen flex flex-col">
       {/* Navbar */}
@@ -18,9 +36,12 @@ export default function IndexAdmin() {
           </Link>
 
           <div className="flex items-center space-x-2">
-            <span className="hidden md:inline text-gray-700 font-medium">
-              Halo, Admin Coy
-            </span>
+            {user && (
+              <span className="hidden md:inline text-gray-700 font-medium">
+                Halo {user.name}
+              </span>
+            )}
+
             <button type="button" className="focus:outline-none">
               <div className="w-9 h-9 overflow-hidden border-2 border-gray-400 rounded-full">
                 <img

@@ -72,18 +72,17 @@ function MenuItem({ icon, label, isOpen, to }) {
   );
 }
 
-function LogoutButton({ icon, label, isOpen, onLogout }) {
+function LogoutButton({ icon, label, isOpen, onClick }) {
   return (
     <button
       type="button"
-      onClick={onLogout}
+      onClick={onClick}
       className="flex items-center w-full px-3 py-2 rounded-lg transition-colors duration-300 cursor-pointer text-gray-800 hover:bg-gray-100 hover:text-blue-600"
     >
       <i className={`fa-solid ${icon} min-w-[20px] text-center`} />
       <span
         className={`ml-2 text-sm font-lg whitespace-nowrap transition-all duration-300 
-          ${isOpen ? "opacity-100 w-auto" : "opacity-0 w-0 overflow-hidden"}
-        `}
+          ${isOpen ? "opacity-100 w-auto" : "opacity-0 w-0 overflow-hidden"}`}
       >
         {label}
       </span>
@@ -95,6 +94,7 @@ export default function AsideDashboard() {
   const [isOpen, setIsOpen] = useState(true);
   const toggleSidebar = () => setIsOpen((prev) => !prev);
   const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(null);
 
   const handleLogout = async () => {
     try {
@@ -189,8 +189,49 @@ export default function AsideDashboard() {
 
         <div className="mt-12">
           <MenuItem icon="fa-gear" label="Pengaturan" isOpen={isOpen} to="/settings"/>
-          <LogoutButton icon="fa-arrow-right-from-bracket" isOpen={isOpen} label="Keluar" onLogout={handleLogout} />
+          <LogoutButton icon="fa-arrow-right-from-bracket" isOpen={isOpen} label="Keluar" onClick={() => setShowModal(true)} />
         </div>
+
+        {/* Modal Konfirmasi Logout */}
+        {showModal && (
+          <div className="fixed inset-0 z-10 overflow-hidden">
+            <div className="flex items-center justify-center min-h-screen px-4 text-center">
+              <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">
+                &#8203;
+              </span>
+
+              <div className="relative inline-block px-4 pt-5 pb-4 overflow-hidden text-left align-middle transition-all transform bg-white rounded-lg shadow-xl sm:max-w-sm sm:w-full sm:p-6">
+                <div className="flex items-center justify-center">
+                  <i class="fa-solid fa-right-from-bracket text-4xl text-red-600"></i>
+                </div>
+
+                <div className="my-3 text-center">
+                  <h3 className="text-lg font-medium leading-6 text-gray-800">
+                    Konfirmasi Keluar
+                  </h3>
+                  <p className="mt-2 text-sm text-gray-500">
+                    Apakah kamu yakin ingin keluar dari akun ini?
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between">
+                  <button
+                    onClick={() => setShowModal(false)}
+                    className="px-4 py-2 mt-2 text-sm font-medium tracking-wide text-gray-700 border border-gray-200 rounded-md sm:w-auto sm:mx-2 hover:bg-gray-100"
+                  >
+                    Batal
+                  </button>
+                  <button
+                    onClick={handleLogout}
+                    className="px-4 py-2 mt-2 text-sm font-medium tracking-wide text-white bg-red-600 rounded-md sm:w-auto hover:bg-red-500"
+                  >
+                    Ya, Keluar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );
