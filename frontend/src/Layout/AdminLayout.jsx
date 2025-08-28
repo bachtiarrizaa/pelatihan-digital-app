@@ -14,10 +14,7 @@ export default function AdminLayout() {
             <SidebarAdmin />
           </aside>
   
-          <main className="flex-1 h-full overflow-y-auto overflow-x-hidden p-4 bg-white w-full">
-            {/* <div className="h-[2000px]">
-              Konten admin di sini... (tes scroll panjang)
-            </div> */}
+          <main className="flex-1 h-full overflow-y-auto overflow-x-hidden px-2 pt-4 pb-8 bg-white w-full">
             <Outlet />
           </main>
         </div>

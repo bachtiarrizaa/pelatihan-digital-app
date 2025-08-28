@@ -146,7 +146,7 @@ export default function SidebarAdmin() {
             isOpen={isOpen}
             submenu={[
               { label: "Lihat Semua", to: "/admin/user" },
-              { label: "Tambah Data", to: "/user/add" },
+              { label: "Tambah Data", to: "/admin/user/tambah" },
             ]}
           />
           <MenuItemWithDropdown
@@ -154,8 +154,8 @@ export default function SidebarAdmin() {
             label="Program Pelatihan"
             isOpen={isOpen}
             submenu={[
-              { label: "Lihat Semua", to: "/program" },
-              { label: "Tambah Data", to: "/program/add" },
+              { label: "Lihat Semua", to: "/admin/pelatihan" },
+              { label: "Tambah Data", to: "/admin/pelatihan/tambah" },
             ]}
           />
           <MenuItemWithDropdown

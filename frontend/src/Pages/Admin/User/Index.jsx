@@ -26,7 +26,7 @@ export default function UserDashboard() {
 
                 <button className="flex items-center justify-center w-1/2 px-5 py-2 text-sm tracking-wide text-white transition-colors duration-200 bg-blue-500 rounded-lg shrink-0 sm:w-auto gap-x-2 hover:bg-blue-600">
                     <i className="fa-solid fa-user-plus"></i>
-                    <span>Tambah</span>
+                    <span className="font-medium">Tambah</span>
                 </button>
             </div>
         </div>

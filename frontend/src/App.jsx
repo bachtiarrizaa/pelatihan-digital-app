@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from './Pages/Home';
 import Register from './Pages/Auth/Register';
 import Login from './Pages/Auth/Login';
-import AdminDashboard from './Pages/Admin/Dashboard';
+// import AdminDashboard from './Pages/Admin/Dashboard';
 import Profile from './Pages/Profile/Index';
 import NotFound from './Components/NotFound';
 import DaftarPelatihan from './Pages/Pelatihan/DaftarPelatihan';
@@ -18,6 +18,8 @@ import ResetKataSandi from './Pages/Profile/ResetKataSandi';
 import AdminLayout from './Layout/AdminLayout';
 import IndexAdmin from './Pages/Admin/Index';
 import UserDashboard from './Pages/Admin/User/Index';
+import PelatihanIndexAdmin from './Pages/Admin/ProgramPelatihan/Index';
+import PelatihanDetailAdmin from './Pages/Admin/ProgramPelatihan/Detail';
 
 export default function App() {
   return (
@@ -44,6 +46,8 @@ export default function App() {
       <Route element={<AdminLayout />}>
         <Route path="/admin" element={<IndexAdmin />} />
         <Route path="/admin/user" element={<UserDashboard />} />
+        <Route path="/admin/pelatihan" element={<PelatihanIndexAdmin />} />
+        <Route path="/admin/pelatihan/detail" element={<PelatihanDetailAdmin />} />
       </Route>
 
 
