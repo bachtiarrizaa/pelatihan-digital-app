@@ -1,15 +1,21 @@
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation  } from "react-router-dom";
 import axios from "../../lib/axios";
 
 function MenuItemWithDropdown({ icon, label, isOpen, submenu }) {
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+
+  const isAnySubmenuActive = submenu.some((item) => item.to === location.pathname);
 
   return (
     <div>
+      {/* Parent div */}
       <div
         onClick={() => setOpen((prev) => !prev)}
-        className="flex items-center justify-between px-3 py-2 text-gray-800 transition-colors duration-300 transform rounded-lg hover:bg-gray-100 hover:text-blue-600 cursor-pointer"
+        className={`flex items-center justify-between px-3 py-2 transition-colors duration-300 transform rounded-lg cursor-pointer ${
+          isAnySubmenuActive ? "bg-blue-100 text-blue-600" : "text-gray-800 hover:bg-gray-100 hover:text-blue-600"
+        }`}
       >
         <div className="flex items-center">
           <i className={`fa-solid ${icon} min-w-[20px] text-center`} />
@@ -28,15 +34,17 @@ function MenuItemWithDropdown({ icon, label, isOpen, submenu }) {
         />
       </div>
 
-      {/* Submenu pakai NavLink */}
+      {/* Submenu */}
       <div
-        className={`ml-8 flex flex-col overflow-hidden transition-all duration-300 
-          ${open ? "max-h-40 opacity-100" : "max-h-0 opacity-0"}`}
+        className={`ml-8 flex flex-col overflow-hidden transition-all duration-300 ${
+          open ? "max-h-40 opacity-100" : "max-h-0 opacity-0"
+        }`}
       >
         {submenu.map((item, idx) => (
           <NavLink
             key={idx}
             to={item.to}
+            end
             className={({ isActive }) =>
               `px-2 py-1 text-sm rounded-md transition-colors duration-200 ${
                 isActive ? "text-blue-600 font-semibold" : "text-gray-600 hover:text-blue-500"
@@ -154,8 +162,8 @@ export default function SidebarAdmin() {
             label="Program Pelatihan"
             isOpen={isOpen}
             submenu={[
-              { label: "Lihat Semua", to: "/admin/pelatihan" },
-              { label: "Tambah Data", to: "/admin/pelatihan/tambah" },
+              { label: "Semua Pelatihan", to: "/admin/pelatihan" },
+              { label: "Tambah Pelatihan", to: "/admin/pelatihan/tambah" },
             ]}
           />
           <MenuItemWithDropdown
@@ -163,8 +171,8 @@ export default function SidebarAdmin() {
             label="Materi Pelatihan"
             isOpen={isOpen}
             submenu={[
-              { label: "Lihat Semua", to: "/materi" },
-              { label: "Tambah Data", to: "/materi/add" },
+              { label: "Semua Materi", to: "/materi" },
+              { label: "Tambah Materi", to: "/materi/add" },
             ]}
           />
           <MenuItemWithDropdown
@@ -172,8 +180,8 @@ export default function SidebarAdmin() {
             label="Kategori Pelatihan"
             isOpen={isOpen}
             submenu={[
-              { label: "Lihat Semua", to: "/kategori" },
-              { label: "Tambah Data", to: "/kategori/add" },
+              { label: "Semua Kategori", to: "/kategori" },
+              { label: "Tambah Kategori", to: "/kategori/add" },
             ]}
           />
           <MenuItemWithDropdown
@@ -181,8 +189,8 @@ export default function SidebarAdmin() {
             label="Feedback"
             isOpen={isOpen}
             submenu={[
-              { label: "Lihat Semua", to: "/feedback" },
-              { label: "Tambah Data", to: "/feedback/add" },
+              { label: "Semua Feedback", to: "/feedback" },
+              { label: "Tambah Feedback", to: "/feedback/add" },
             ]}
           />
         </nav>

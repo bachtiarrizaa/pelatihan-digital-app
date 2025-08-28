@@ -20,6 +20,7 @@ import IndexAdmin from './Pages/Admin/Index';
 import UserDashboard from './Pages/Admin/User/Index';
 import PelatihanIndexAdmin from './Pages/Admin/ProgramPelatihan/Index';
 import PelatihanDetailAdmin from './Pages/Admin/ProgramPelatihan/Detail';
+import TambahPelatihanAdmin from './Pages/Admin/ProgramPelatihan/Tambah';
 
 export default function App() {
   return (
@@ -48,6 +49,7 @@ export default function App() {
         <Route path="/admin/user" element={<UserDashboard />} />
         <Route path="/admin/pelatihan" element={<PelatihanIndexAdmin />} />
         <Route path="/admin/pelatihan/detail" element={<PelatihanDetailAdmin />} />
+        <Route path="/admin/pelatihan/tambah" element={<TambahPelatihanAdmin />} />
       </Route>
 
 
