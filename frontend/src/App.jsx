@@ -14,7 +14,10 @@ import AktivitasBelajar from './Pages/AktivitasBelajar';
 import AktivitasBelajarSelesai from './Pages/AktivitasBelajar/Selesai';
 import UbahKataSandi from './Pages/Profile/UbahKataSandi';
 import ResetKataSandi from './Pages/Profile/ResetKataSandi';
+
+import AdminLayout from './Layout/AdminLayout';
 import IndexAdmin from './Pages/Admin/Index';
+import UserDashboard from './Pages/Admin/User/Index';
 
 export default function App() {
   return (
@@ -36,8 +39,16 @@ export default function App() {
       <Route path="/pembelajaran" element={<IndexPembelajaran />} />
       <Route path="/ubah-password" element={<UbahKataSandi />} />
       <Route path="/reset-password" element={<ResetKataSandi />} />
-      <Route path="/admin" element={<IndexAdmin />} />
-      {/* <Route path="/admin" element={<AdminDashboard />} /> */}
+      
+      {/* Halaman Admin */}
+      <Route element={<AdminLayout />}>
+        <Route path="/admin" element={<IndexAdmin />} />
+        <Route path="/admin/user" element={<UserDashboard />} />
+      </Route>
+
+
+      {/* <Route path="/admin" element={<IndexAdmin />} />
+      <Route path="/admin/user" element={<UserDashboard />} /> */}
 
       {/* 404 */}
       <Route path="*" element={<NotFound />} />
